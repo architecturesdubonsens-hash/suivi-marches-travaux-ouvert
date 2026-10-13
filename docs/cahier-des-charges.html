@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>Présentation du Projet d'Outil - Suivi des Marchés de Travaux</title>
+<style>
+  @page {
+    size: A4;
+    margin: 20mm 15mm 20mm 15mm;
+  }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    color: #1e293b;
+    line-height: 1.5;
+    font-size: 11pt;
+    margin: 0;
+    padding: 0;
+  }
+  .header {
+    border-bottom: 2px solid #0284c7;
+    padding-bottom: 12px;
+    margin-bottom: 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+  .doc-title-top {
+    font-size: 13pt;
+    font-weight: 700;
+    color: #0369a1;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  .doc-subtitle {
+    font-size: 10pt;
+    color: #64748b;
+  }
+  h1 {
+    font-size: 18pt;
+    color: #0f172a;
+    margin: 0 0 8px 0;
+    font-weight: 800;
+  }
+  .intro-badge {
+    display: inline-block;
+    background: #e0f2fe;
+    color: #0369a1;
+    padding: 4px 10px;
+    border-radius: 4px;
+    font-size: 9pt;
+    font-weight: 600;
+    margin-bottom: 16px;
+  }
+  h2 {
+    font-size: 13pt;
+    color: #0284c7;
+    border-left: 4px solid #0284c7;
+    padding-left: 10px;
+    margin-top: 24px;
+    margin-bottom: 12px;
+  }
+  h3 {
+    font-size: 11pt;
+    color: #334155;
+    margin-top: 14px;
+    margin-bottom: 6px;
+    font-weight: 700;
+  }
+  p {
+    margin: 0 0 10px 0;
+    text-align: justify;
+  }
+  ul, ol {
+    margin: 0 0 12px 0;
+    padding-left: 20px;
+  }
+  li {
+    margin-bottom: 5px;
+  }
+  .card {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin-bottom: 14px;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 14px 0;
+    font-size: 9.5pt;
+  }
+  th {
+    background: #f1f5f9;
+    color: #334155;
+    text-align: left;
+    padding: 8px 10px;
+    border: 1px solid #cbd5e1;
+    font-weight: 700;
+  }
+  td {
+    padding: 8px 10px;
+    border: 1px solid #cbd5e1;
+    vertical-align: top;
+  }
+  .page-break {
+    page-break-before: always;
+  }
+  .footer {
+    margin-top: 30px;
+    border-top: 1px solid #e2e8f0;
+    padding-top: 8px;
+    font-size: 8.5pt;
+    color: #94a3b8;
+    text-align: center;
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div>
+    <div class="doc-title-top">SUIVI DES MARCHÉS DE TRAVAUX</div>
+    <div class="doc-subtitle">Automatisation Administrative, Juridique et Financière</div>
+  </div>
+  <div style="text-align: right; font-size: 9pt; color: #64748b;">
+    Dossier de Présentation<br>
+    <strong>Outil de Chaînage MT - OS - CRC</strong>
+  </div>
+</div>
+
+<div class="intro-badge">PRÉSENTATION DU PROJET</div>
+
+<h1>Automatisation et Chaînage du Suivi des Marchés de Travaux</h1>
+<p style="font-size: 11pt; color: #475569; font-weight: 500;">
+  Génération automatisée des Marchés Privés (MT), Ordres de Service (OS), Comptes Rendus de Chantier (CRC) et Avenants à partir des devis retenus et contrôle réglementaire des dossiers entreprises.
+</p>
+
+<h2>1. Contexte & Problématique Métier</h2>
+<p>
+  Lors du passage de la phase de consultation des entreprises (DCE / AO) à la phase exécution (DET / VISA / OPC), l'agence gère une volumétrie importante de données juridiques, techniques et financières. L'analyse des retours d'expérience et des chantiers passés de l'agence a mis en évidence trois freins majeurs :
+</p>
+<ul>
+  <li><strong>Ressaisie manuelle redondante</strong> : Les informations relatives aux entreprises retenues (raison sociale, SIRET, représentants, montants HT, délais, prorata, numéros de devis) sont aujourd'hui ressaisies séparément dans les marchés de travaux, les ordres de service, les comptes rendus de chantier et les tableaux de bord d'avenants.</li>
+  <li><strong>Risque juridique sur les assurances de chantier</strong> : En application de l'article L. 241-1 du Code des Assurances et de la jurisprudence constante, la responsabilité de la maîtrise d'œuvre est engagée si une entreprise intervient alors que son attestation décennale est expirée ou <em>ne garantit pas l'activité spécifique des travaux soumis</em>.</li>
+  <li><strong>Gestion des variantes et options</strong> : Les devis retenus intègrent fréquemment des variantes (plus-values, moins-values, options techniques) nécessitant des recalculs manuels et leur retranscription formelle en toutes lettres dans le CCAP.</li>
+</ul>
+
+<h2>2. Les 4 Livrables Métier Chaînés</h2>
+<table>
+  <thead>
+    <tr>
+      <th style="width: 24%;">Document</th>
+      <th style="width: 14%;">Format</th>
+      <th style="width: 32%;">Rôle & Contenu</th>
+      <th style="width: 30%;">Règles & Conformité</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Marché de Travaux (MT)</strong></td>
+      <td>Word (.docx)</td>
+      <td>Contrat de marché privé liant le Maître d'Ouvrage et chaque entreprise adjudicataire.</td>
+      <td>Conforme CCAP NF P 03-001 (13 articles). Montant en chiffres et en lettres. Situations au 25 en 3 originaux, 5% de retenue de garantie, pénalités de retard.</td>
+    </tr>
+    <tr>
+      <td><strong>Ordre de Service (OS)</strong></td>
+      <td>Excel (.xlsx) & PDF</td>
+      <td>Ordre de démarrage officiel de la période de préparation et des travaux par lot.</td>
+      <td>Mise en page formulaire A4 fidèle aux exigences de l'agence. Détail HT, compte prorata, TVA, TTC, référence devis, délai de forclusion sous 15 jours.</td>
+    </tr>
+    <tr>
+      <td><strong>Compte Rendu (CRC n°01)</strong></td>
+      <td>Word (.docx)</td>
+      <td>Canevas de pilotage hebdomadaire initialisé avec toutes les parties prenantes.</td>
+      <td>Tableau consolidé des intervenants (tél, email, présences), généralités administratives, sous-sections par lot avec suivi des pièces administratives et visas.</td>
+    </tr>
+    <tr>
+      <td><strong>Suivi Avenants (AV)</strong></td>
+      <td>Excel (.xlsx)</td>
+      <td>Fiches de gestion des travaux modificatifs ou supplémentaires.</td>
+      <td>Reprise automatique du montant marché initial (A), cumul des avenants antérieurs (B), plus/moins-value chiffrée et nouveau montant contractuel.</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="page-break"></div>
+
+<h2>3. Fonctionnalités Clés & Sécurisations Intégrées</h2>
+
+<div class="card">
+  <h3 style="color: #0369a1; margin-top: 0;">A. Contrôle d'Adéquation des Couvertures d'Assurance</h3>
+  <p>L'outil analyse systématiquement les attestations de Responsabilité Décennale (RCD) et Civile (RC) :</p>
+  <ul>
+    <li><strong>Validité dans le temps</strong> : Vérification que la période de garantie couvre la Date Réglementaire d'Ouverture de Chantier (DROC) et la durée prévisionnelle des travaux.</li>
+    <li><strong>Adéquation technique Lot &harr; Activité déclarée</strong> : Rapprochement textuel entre les postes du devis et les activités garanties de la police (ex. <em>bardage de façade</em> pour un étancheur, <em>portes automatiques motorisées</em> pour un serrurier).</li>
+    <li><strong>Détection des exclusions formelles</strong> : Signalement immédiat des limites de garantie (ex. <em>« Sauf verrières > 100 m² »</em>, exclusion photovoltaïque, travaux en sous-œuvre).</li>
+  </ul>
+</div>
+
+<div class="card">
+  <h3 style="color: #0369a1; margin-top: 0;">B. Gestion Dynamique des Devis avec Variantes</h3>
+  <p>Les offres entreprises sont décomposées en :</p>
+  <ul>
+    <li><strong>Offre de Base</strong> : Lot principal chiffré.</li>
+    <li><strong>Variantes & Options</strong> : Plus-values / moins-values identifiées.</li>
+    <li><strong>Calculateur automatique</strong> : L'architecte coche les variantes retenues avec le maître d'ouvrage ; l'outil recalcule instantanément le montant HT net, applique le prorata, calcule le TTC et génère la retranscription littérale exacte pour le marché.</li>
+  </ul>
+</div>
+
+<div class="card">
+  <h3 style="color: #0369a1; margin-top: 0;">C. Annuaire Agence & Multi-Acteurs</h3>
+  <p>Pour s'adapter à l'organisation de l'agence sans ressaisie :</p>
+  <ul>
+    <li><strong>Profil Agence centralisé</strong> : Enregistrement unique des données légales de l'agence.</li>
+    <li><strong>Listes déroulantes par projet</strong> :
+      <ul>
+        <li>Sélection de l'<strong>Architecte signataire</strong> habilité pour le Marché et l'OS.</li>
+        <li>Sélection du ou des <strong>Conducteurs de travaux</strong> pour le tableau des participants et la diffusion des CRC.</li>
+      </ul>
+    </li>
+  </ul>
+</div>
+
+<h2>4. Workflow Opérationnel de l'Outil</h2>
+<ol>
+  <li><strong>Configuration du Projet</strong> : Saisie unique des données opération (nom, adresse, PC, Maître d'Ouvrage) et sélection de l'équipe agence.</li>
+  <li><strong>Dépôt des Devis et Pièces</strong> : Glisser-déposer du dossier contenant les devis retenus et les pièces administratives (Kbis, assurances).</li>
+  <li><strong>Validation & Sélection</strong> : Validation visuelle des montants, choix des variantes retenues, vérification du voyant vert de conformité des assurances.</li>
+  <li><strong>Génération 1-Clic</strong> : Production de l'ensemble des dossiers classés :
+    <ul>
+      <li><code>01_MARCHES/</code> : Fichiers .docx personnalisés par lot.</li>
+      <li><code>02_OS/</code> : Classeur Excel et éditions PDF prêtes à émarger.</li>
+      <li><code>03_CRC/</code> : Document CRC-01.docx prêt pour la première réunion.</li>
+      <li><code>04_SUIVI_AVENANTS/</code> : Tableau de bord financier à jour.</li>
+    </ul>
+  </li>
+</ol>
+
+<div class="footer">
+  Document édité le 25/09/2026 — Outil de Suivi et de Chaînage des Marchés de Travaux
+</div>
+
+</body>
+</html>

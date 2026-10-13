@@ -1,0 +1,633 @@
+{
+  "_meta": {
+    "role": "Jeu de données d'EXEMPLE (entièrement fictif) utilisé par les tests d'intégration et la démonstration. Aucune personne ni entreprise réelle. Toute valeur inconnue est null.",
+    "conventionDates": "Toutes les dates sont des chaînes « AAAA-MM-JJ » (cf. docs/MODELE-DONNEES.md). Les gabarits Excel stockent leurs dates en série 1904 ; les générateurs convertissent."
+  },
+  "agence": {
+    "raisonSociale": "S.A.R.L. EXEMPLE ARCHITECTURE",
+    "forme": "S.A.R.L.",
+    "representant": "Camille Exemple",
+    "siren": "100000066",
+    "siret": null,
+    "adresse": "1 rue de l’Exemple",
+    "cp": "12340",
+    "ville": "Villeclaire",
+    "tel": "01 00 00 00 01",
+    "email": null,
+    "titreBloc": "L'agence d'architecture",
+    "lieuFait": "Villeclaire"
+  },
+  "entreprises": [
+    {
+      "id": "serrurex",
+      "raisonSociale": "SERRUREX",
+      "forme": null,
+      "representant": null,
+      "qualiteRepresentant": null,
+      "siren": null,
+      "siret": null,
+      "adresse": "14 rue du Test",
+      "cp": "12270",
+      "ville": "RIVEBELLE",
+      "tel": "01 00 00 00 02",
+      "email": "contact@serrurex.example",
+      "lotNom": "SERRURERIE",
+      "lotNumero": 12
+    },
+    {
+      "id": "atse",
+      "raisonSociale": "ATELIER SERVICES ELECTRIQUES",
+      "forme": null,
+      "representant": null,
+      "qualiteRepresentant": null,
+      "siren": null,
+      "siret": null,
+      "adresse": null,
+      "cp": null,
+      "ville": null,
+      "tel": null,
+      "email": null,
+      "lotNom": "TRANSFORMATEUR",
+      "lotNumero": null
+    },
+    {
+      "id": "betonor",
+      "raisonSociale": "BETONOR TRAVAUX",
+      "forme": null,
+      "representant": null,
+      "qualiteRepresentant": null,
+      "siren": null,
+      "siret": null,
+      "adresse": null,
+      "cp": null,
+      "ville": null,
+      "tel": null,
+      "email": null,
+      "lotNom": "GROS OEUVRE TRANSFO",
+      "lotNumero": null
+    },
+    {
+      "id": "voltalis",
+      "raisonSociale": "SAS VOLTALIS",
+      "forme": "S.A.S.",
+      "representant": "Marc TEST",
+      "qualiteRepresentant": null,
+      "siren": "100000041",
+      "siret": "10000004100024",
+      "adresse": "ZA de l’Exemple - CS 0001, Rue du Vent-Test",
+      "cp": "12350",
+      "ville": "VILLENEUVE-EXEMPLE",
+      "tel": null,
+      "email": null,
+      "lotNom": "ELECTRICITE",
+      "lotNumero": null
+    },
+    {
+      "id": "aluminor",
+      "raisonSociale": "ALUMINOR ALUMINIUM",
+      "forme": null,
+      "representant": null,
+      "qualiteRepresentant": null,
+      "siren": null,
+      "siret": null,
+      "adresse": null,
+      "cp": null,
+      "ville": null,
+      "tel": null,
+      "email": null,
+      "lotNom": "MENUISERIES ALUMINIUM",
+      "lotNumero": null
+    },
+    {
+      "id": "climaxe",
+      "raisonSociale": "CLIMAXE",
+      "forme": null,
+      "representant": null,
+      "qualiteRepresentant": null,
+      "siren": null,
+      "siret": null,
+      "adresse": null,
+      "cp": null,
+      "ville": null,
+      "tel": null,
+      "email": null,
+      "lotNom": "CVC",
+      "lotNumero": null
+    },
+    {
+      "id": "eleval",
+      "raisonSociale": "SA ELEVAL",
+      "forme": "S.A.",
+      "representant": null,
+      "qualiteRepresentant": null,
+      "siren": "100000058",
+      "siret": null,
+      "adresse": "ZAC de l’Exemple, 455 avenue du Test, CS 00000",
+      "cp": "12206",
+      "ville": "GRANDVILLE CEDEX 3",
+      "tel": null,
+      "email": null,
+      "lotNom": "ASCENSEURS",
+      "lotNumero": null
+    },
+    {
+      "id": "autoporte",
+      "raisonSociale": "AUTOPORTE",
+      "forme": null,
+      "representant": null,
+      "qualiteRepresentant": null,
+      "siren": null,
+      "siret": null,
+      "adresse": null,
+      "cp": null,
+      "ville": null,
+      "tel": null,
+      "email": null,
+      "lotNom": "PORTES AUTOMATIQUES",
+      "lotNumero": null
+    },
+    {
+      "id": "plateria",
+      "raisonSociale": "SARL PLATERIA",
+      "forme": "S.A.R.L.",
+      "representant": null,
+      "qualiteRepresentant": null,
+      "siren": "100000025",
+      "siret": null,
+      "adresse": "8 rue du Modèle, ZI Nord",
+      "cp": "12000",
+      "ville": "HAUTMONT-TEST",
+      "tel": null,
+      "email": null,
+      "lotNom": "PLATRERIE SOLS",
+      "lotNumero": null
+    },
+    {
+      "id": "aquatherm",
+      "raisonSociale": "SEE AQUATHERM",
+      "forme": null,
+      "representant": null,
+      "qualiteRepresentant": null,
+      "siren": null,
+      "siret": null,
+      "adresse": null,
+      "cp": null,
+      "ville": null,
+      "tel": null,
+      "email": null,
+      "lotNom": "PLOMBERIE",
+      "lotNumero": null
+    },
+    {
+      "id": "flexiport",
+      "raisonSociale": "FLEXIPORT",
+      "forme": null,
+      "representant": null,
+      "qualiteRepresentant": null,
+      "siren": null,
+      "siret": null,
+      "adresse": null,
+      "cp": null,
+      "ville": null,
+      "tel": null,
+      "email": null,
+      "lotNom": "PORTES SOUPLES",
+      "lotNumero": null
+    },
+    {
+      "id": "azurbat-const",
+      "raisonSociale": "AZURBAT CONSTRUCTION",
+      "forme": null,
+      "representant": null,
+      "qualiteRepresentant": null,
+      "siren": null,
+      "siret": null,
+      "adresse": null,
+      "cp": null,
+      "ville": null,
+      "tel": null,
+      "email": null,
+      "lotNom": "GROS OEUVRE",
+      "lotNumero": null
+    },
+    {
+      "id": "froidex-pro",
+      "raisonSociale": "FROIDEX PRO",
+      "forme": null,
+      "representant": null,
+      "qualiteRepresentant": null,
+      "siren": null,
+      "siret": null,
+      "adresse": null,
+      "cp": null,
+      "ville": null,
+      "tel": null,
+      "email": null,
+      "lotNom": "PANNEAUX FROIDS",
+      "lotNumero": null
+    },
+    {
+      "id": "toituria",
+      "raisonSociale": "TOITURIA ENTREPRISES",
+      "forme": null,
+      "representant": null,
+      "qualiteRepresentant": null,
+      "siren": null,
+      "siret": null,
+      "adresse": null,
+      "cp": null,
+      "ville": null,
+      "tel": null,
+      "email": null,
+      "lotNom": "BARDAGE COUVERTURES",
+      "lotNumero": null
+    },
+    {
+      "id": "colorama",
+      "raisonSociale": "S.A.S. COLORAMA",
+      "forme": "S.A.S.",
+      "representant": "Morgan MODELE",
+      "qualiteRepresentant": "gérant",
+      "siren": "100000082",
+      "siret": null,
+      "adresse": "80 traverse du Modèle",
+      "cp": "12780",
+      "ville": "MONTCLAIR-TEST",
+      "tel": null,
+      "email": null,
+      "lotNom": "PEINTURE",
+      "lotNumero": null
+    },
+    {
+      "id": "sprinka",
+      "raisonSociale": "SPRINKA SUD OUEST",
+      "forme": null,
+      "representant": null,
+      "qualiteRepresentant": null,
+      "siren": null,
+      "siret": null,
+      "adresse": null,
+      "cp": null,
+      "ville": null,
+      "tel": null,
+      "email": null,
+      "lotNom": "RIA SPK",
+      "lotNumero": 18
+    },
+    {
+      "id": "desamia",
+      "raisonSociale": "S.A.S. DESAMIA",
+      "forme": "S.A.S.",
+      "representant": "Robin TEST",
+      "qualiteRepresentant": "Président",
+      "siren": "100000074",
+      "siret": null,
+      "adresse": "1 ROUTE DE L’EXEMPLE",
+      "cp": "12351",
+      "ville": "BASVILLE",
+      "tel": null,
+      "email": null,
+      "lotNom": null,
+      "lotNumero": null
+    }
+  ],
+  "operations": [
+    {
+      "reference": "OP-2026-01",
+      "cle": "villeneuve-exemple",
+      "intitule": "AMENAGEMENT D'UN BATIMENT COMMERCIAL - SUPERMARCHE",
+      "adresse": "ZAC de l’Exemple",
+      "cp": "12350",
+      "ville": "VILLENEUVE-EXEMPLE",
+      "droc": null,
+      "dureePrevisionnelleMois": null,
+      "coutTravauxHT": null,
+      "ouvertureChantier": null,
+      "ouvrageSoumis": null,
+      "pc": null,
+      "maitreOuvrage": {
+        "raisonSociale": "S.A.S. DISTRIBEX",
+        "representant": "Lou EXEMPLE",
+        "qualiteRepresentant": "co-dirigeant",
+        "siren": "100000017",
+        "siret": "10000001700012",
+        "adresse": "2 route de l’Exemple",
+        "cp": "12350",
+        "ville": "VILLENEUVE-EXEMPLE"
+      },
+      "entreprises": [
+        "serrurex",
+        "atse",
+        "betonor",
+        "voltalis",
+        "aluminor",
+        "climaxe",
+        "eleval",
+        "autoporte",
+        "plateria",
+        "aquatherm",
+        "flexiport",
+        "azurbat-const",
+        "froidex-pro",
+        "toituria",
+        "colorama",
+        "sprinka"
+      ],
+      "devis": [
+        {
+          "entrepriseId": "voltalis",
+          "numero": null,
+          "date": null,
+          "htBase": 560000,
+          "variantes": [],
+          "prorata": {
+            "mode": "inclus"
+          },
+          "montantsObserves": {
+            "ht": 560000,
+            "tva": 112000,
+            "ttc": 672000
+          }
+        },
+        {
+          "entrepriseId": "colorama",
+          "numero": "DEV00000693",
+          "date": "2025-01-16",
+          "htBase": 84378.08,
+          "variantes": [],
+          "prorata": {
+            "mode": "inclus"
+          },
+          "montantsObserves": {
+            "ht": 84378.08,
+            "tva": 16875.616,
+            "ttc": 101253.696
+          }
+        },
+        {
+          "entrepriseId": "climaxe",
+          "numero": "790-24BA",
+          "date": "2025-02-12",
+          "htBase": null,
+          "variantes": [],
+          "prorata": {
+            "mode": "inclus"
+          },
+          "montantsObserves": null
+        },
+        {
+          "entrepriseId": "toituria",
+          "numero": "2412048B02",
+          "date": "2025-03-06",
+          "htBase": null,
+          "variantes": [],
+          "prorata": {
+            "mode": "inclus"
+          },
+          "montantsObserves": null
+        },
+        {
+          "entrepriseId": "autoporte",
+          "numero": "DC251099",
+          "date": "2025-04-10",
+          "htBase": null,
+          "variantes": [],
+          "prorata": {
+            "mode": "inclus"
+          },
+          "montantsObserves": null
+        },
+        {
+          "entrepriseId": "flexiport",
+          "numero": "D2501766",
+          "date": "2025-04-11",
+          "htBase": null,
+          "variantes": [],
+          "prorata": {
+            "mode": "inclus"
+          },
+          "montantsObserves": null
+        },
+        {
+          "entrepriseId": "sprinka",
+          "numero": "31.826.61-0-a",
+          "date": null,
+          "htBase": null,
+          "variantes": [],
+          "prorata": {
+            "mode": "inclus"
+          },
+          "montantsObserves": null
+        },
+        {
+          "entrepriseId": "plateria",
+          "numero": "5584",
+          "date": null,
+          "htBase": null,
+          "variantes": [],
+          "prorata": {
+            "mode": "inclus"
+          },
+          "montantsObserves": null
+        },
+        {
+          "entrepriseId": "froidex-pro",
+          "numero": "24110401-9",
+          "date": null,
+          "htBase": null,
+          "variantes": [],
+          "prorata": {
+            "mode": "inclus"
+          },
+          "montantsObserves": null
+        },
+        {
+          "entrepriseId": "serrurex",
+          "numero": "D2412-046 B",
+          "date": null,
+          "htBase": null,
+          "variantes": [],
+          "prorata": {
+            "mode": "inclus"
+          },
+          "montantsObserves": null
+        },
+        {
+          "entrepriseId": "aluminor",
+          "numero": "728",
+          "date": null,
+          "htBase": null,
+          "variantes": [],
+          "prorata": {
+            "mode": "inclus"
+          },
+          "montantsObserves": null
+        },
+        {
+          "entrepriseId": "atse",
+          "numero": null,
+          "date": null,
+          "htBase": null,
+          "variantes": [],
+          "prorata": {
+            "mode": "inclus"
+          },
+          "montantsObserves": null
+        },
+        {
+          "entrepriseId": "betonor",
+          "numero": null,
+          "date": null,
+          "htBase": null,
+          "variantes": [],
+          "prorata": {
+            "mode": "inclus"
+          },
+          "montantsObserves": null
+        },
+        {
+          "entrepriseId": "eleval",
+          "numero": null,
+          "date": null,
+          "htBase": null,
+          "variantes": [],
+          "prorata": {
+            "mode": "inclus"
+          },
+          "montantsObserves": null
+        },
+        {
+          "entrepriseId": "azurbat-const",
+          "numero": null,
+          "date": null,
+          "htBase": null,
+          "variantes": [],
+          "prorata": {
+            "mode": "inclus"
+          },
+          "montantsObserves": null
+        }
+      ],
+      "os": [
+        {
+          "entrepriseId": "colorama",
+          "numero": 1,
+          "dateDebut": "2025-04-28",
+          "date": "2025-03-27",
+          "lot": "PEINTURE",
+          "htProRataInclus": 84378.08,
+          "ttc": 101253.696,
+          "devisNumero": "DEV00000693",
+          "devisDate": "2025-01-16"
+        }
+      ],
+      "avenants": [
+        {
+          "numero": "1",
+          "objet": "PV — Devis du 27/03/2025 : raccordement TJ et divisionnaire des cellules 0, 2, 3, 4, 5 et 6",
+          "entrepriseId": "voltalis",
+          "lignes": [
+            {
+              "libelle": "Devis 27/03/2025 Rac. TJ et Divisionnaire cellule 0,2,3,4, 5 et 6",
+              "sens": "plus",
+              "montant": 38682.1
+            }
+          ],
+          "modificationDelais": "Néant",
+          "montantsObserves": {
+            "A": {
+              "ht": 560000,
+              "tva": 112000,
+              "ttc": 672000
+            },
+            "B": {
+              "ht": 560000,
+              "tva": 112000,
+              "ttc": 672000
+            },
+            "C": {
+              "ht": 38682.1,
+              "tva": 7736.42,
+              "ttc": 46418.52
+            },
+            "D": {
+              "ht": 0,
+              "tva": 0,
+              "ttc": 0
+            },
+            "cumule": {
+              "ht": 598682.1,
+              "tva": 119736.42,
+              "ttc": 718418.52
+            }
+          }
+        }
+      ]
+    },
+    {
+      "reference": "OP-2026-01",
+      "cle": "hautmont-test",
+      "intitule": "REFECTION DE LA COUVERTURE, DEPOLLUTION, RENFORCEMENT ET INSTALLATION D'UNE CENTRALE PHOTOVOLTAIQUE",
+      "adresse": "8 rue du Modèle",
+      "cp": "12000",
+      "ville": "HAUTMONT-TEST",
+      "droc": null,
+      "dureePrevisionnelleMois": null,
+      "coutTravauxHT": null,
+      "ouvertureChantier": null,
+      "ouvrageSoumis": null,
+      "pc": null,
+      "maitreOuvrage": {
+        "raisonSociale": "S.C.I. DU MODELE",
+        "representant": "Dominique Test",
+        "qualiteRepresentant": "co-dirigeante",
+        "siren": "100000033",
+        "siret": null,
+        "adresse": "8 rue du Modèle",
+        "cp": "12000",
+        "ville": "HAUTMONT-TEST"
+      },
+      "entreprises": [
+        "desamia"
+      ],
+      "devis": [
+        {
+          "entrepriseId": "desamia",
+          "numero": "22041 v2",
+          "date": "2025-03-05",
+          "htBase": 89918.24,
+          "variantes": [
+            {
+              "libelle": "Composante additionnelle portée par la formule F29 du gabarit OS (=89918,24+7215,33) ; nature exacte non documentée",
+              "sens": "plus",
+              "ht": 7215.33,
+              "retenue": true
+            }
+          ],
+          "prorata": {
+            "mode": "inclus"
+          },
+          "montantsObserves": {
+            "ht": 97133.57,
+            "tva": 19426.714,
+            "ttc": 116560.284
+          }
+        }
+      ],
+      "os": [
+        {
+          "entrepriseId": "desamia",
+          "numero": 1,
+          "dateDebut": "2025-03-05",
+          "date": "2025-03-27",
+          "lot": null,
+          "htProRataInclus": 97133.57,
+          "ttc": 116560.284,
+          "devisNumero": "22041 v2",
+          "devisDate": "2025-03-05"
+        }
+      ],
+      "avenants": []
+    }
+  ]
+}

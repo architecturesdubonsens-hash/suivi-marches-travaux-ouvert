@@ -1,0 +1,21 @@
+# Attributs git — protection des livrables et des bibliothèques tierces.
+#
+# Motif : une conversion de fin de ligne appliquée à un .docx ou à un .xlsx produit un fichier
+# illisible : le livrable deviendrait un document faux, sans erreur visible côté application.
+# Les formats bureautiques sont donc déclarés binaires, sans exception.
+
+*.xlsx binary
+*.docx binary
+*.doc binary
+*.xls binary
+*.pdf binary
+*.png binary
+*.jpg binary
+*.jpeg binary
+
+# Bibliothèques tierces : livrées telles quelles, jamais retouchées par git.
+vendor/** -text
+
+# Sorties de tests : jamais versionnées (voir .gitignore), mais si elles
+# apparaissaient, aucune conversion ne doit s'y appliquer.
+tests-output/** -text

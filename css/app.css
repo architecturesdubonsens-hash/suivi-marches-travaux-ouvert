@@ -1,0 +1,928 @@
+/* ==========================================================================
+   app.css — feuille de style de l'application « Suivi des Marchés de Travaux »
+   Habillage : charte de la maison, chargée par css/tokens.css (aucune valeur de
+   couleur n'est inventée ici, tout est consommé depuis les jetons).
+     fond de page     crème      (--fond)
+     bandeau d'en-tête ardoise   (--sur-sombre), filet de signature en pétrole
+     actions          ardoise    (--primaire / --accent)
+     statuts          conforme / attention / alerte — chacun accompagné de son
+                      libellé, jamais porté par la seule couleur.
+   Le contenu de saisie (formulaires, tableaux) repose sur des surfaces claires
+   pour rester lisible sur PC comme sur tablette.
+   Aucun préprocesseur, aucun build : CSS statique chargé par index.html.
+   ========================================================================== */
+
+/* Alias métier : l'application nomme ses surfaces, la charte fournit les valeurs.
+   Les noms historiques sont conservés pour ne pas réécrire 500 lignes de règles. */
+:root {
+  --fond: var(--creme-100);
+  --fond-secondaire: var(--sur-sombre);
+  --accent: var(--ardoise-700);
+  --accent-fonce: var(--ardoise-800);
+  --surface: #ffffff;
+  --surface-douce: var(--creme-100);
+  --bord: var(--bordure);
+  --texte-sombre: var(--texte);
+  --texte-clair: var(--neutre-100);
+  --texte-discret: var(--texte-attenue);
+  --vert: var(--conforme-600);
+  --orange: var(--attention-500);
+  --rouge: var(--alerte-600);
+  --signature: var(--petrole-600);
+  --rayon: var(--rayon-carte);
+  --ombre: var(--elevation-2);
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: var(--fond);
+  color: var(--texte-sombre);
+  font-family: var(--police-sans);
+  font-size: 15px;
+  line-height: 1.45;
+}
+
+/* ---------- En-tête bleu marine + bandeau orange (charte) ---------- */
+
+#entete {
+  background: var(--fond-secondaire);
+  color: var(--texte-clair);
+  padding: 10px 18px 0;
+}
+
+#entete .marque {
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+#entete .marque .titre {
+  font-size: 19px;
+  font-weight: 700;
+  letter-spacing: .4px;
+  text-transform: uppercase;
+}
+
+#entete .marque .sous-titre {
+  font-size: 12px;
+  color: var(--texte-sur-sombre);
+}
+
+#bandeau {
+  height: 5px;
+  background: var(--signature);
+}
+
+/* Navigation par étapes (workflow en 4 écrans) */
+#etapes {
+  display: flex;
+  gap: 4px;
+  margin-top: 8px;
+  flex-wrap: wrap;
+}
+
+#etapes .etape {
+  border: 1px solid transparent;
+  background: transparent;
+  color: var(--texte-sur-sombre);
+  padding: 8px 14px;
+  cursor: pointer;
+  border-radius: var(--rayon) var(--rayon) 0 0;
+  font-size: 14px;
+}
+
+#etapes .etape .numero {
+  display: inline-block;
+  width: 22px;
+  height: 22px;
+  line-height: 22px;
+  text-align: center;
+  border-radius: 50%;
+  background: var(--ardoise-800);
+  margin-right: 6px;
+  font-weight: 700;
+}
+
+#etapes .etape.courante {
+  background: var(--surface);
+  color: var(--texte);
+  border-color: var(--accent);
+  border-bottom-color: var(--surface);
+  font-weight: 600;
+}
+
+#etapes .etape.courante .numero { background: var(--accent); color: var(--accent-texte); }
+
+#etapes .etape.joignable:hover { color: var(--texte-sur-sombre-fort); }
+
+#entete .zone-outils {
+  display: flex;
+  /* Regroupés À DROITE. « space-between » répartissait les outils aux deux extrémités dès
+     qu'il y en avait deux, ce qui détachait le bouton d'aide de l'indicateur de sauvegarde
+     et le faisait passer pour un élément de la marque. */
+  justify-content: flex-end;
+  align-items: center;
+  gap: 12px;
+  padding: 6px 0 8px;
+  font-size: 12px;
+  color: var(--texte-sur-sombre);
+}
+
+/* ---------- Structure générale ---------- */
+
+#contenu {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 18px 16px 60px;
+}
+
+.carte {
+  background: var(--surface);
+  border-radius: var(--rayon);
+  box-shadow: var(--ombre);
+  padding: 16px 18px;
+  margin-bottom: 16px;
+}
+
+.carte h2 {
+  margin: 0 0 4px;
+  font-size: 17px;
+  color: var(--fond-secondaire);
+}
+
+.carte h3 {
+  margin: 14px 0 6px;
+  font-size: 14px;
+  color: var(--fond-secondaire);
+  border-left: 4px solid var(--accent);
+  padding-left: 8px;
+}
+
+.aide {
+  color: var(--neutre-600);
+  font-size: 13px;
+  margin: 0 0 12px;
+}
+
+.grille-champs {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 10px 14px;
+}
+
+.champ { display: flex; flex-direction: column; gap: 3px; }
+.champ.etendu { grid-column: 1 / -1; }
+
+.champ label {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--neutre-700);
+  text-transform: uppercase;
+  letter-spacing: .3px;
+}
+
+.champ input, .champ select, .champ textarea {
+  font: inherit;
+  padding: 7px 9px;
+  border: 1px solid var(--bord);
+  border-radius: 6px;
+  background: var(--surface);
+  color: var(--texte-sombre);
+  width: 100%;
+}
+
+.champ input:focus, .champ select:focus, .champ textarea:focus {
+  outline: 2px solid var(--accent);
+  outline-offset: 0;
+  border-color: var(--accent);
+}
+
+/* ---------- Boutons ---------- */
+
+.bouton {
+  font: inherit;
+  border: 1px solid var(--bord);
+  background: var(--surface);
+  color: var(--texte-sombre);
+  border-radius: 6px;
+  padding: 8px 14px;
+  cursor: pointer;
+}
+
+.bouton:hover { background: var(--surface-douce); }
+
+.bouton.primaire {
+  background: var(--accent);
+  border-color: var(--accent-fonce);
+  color: var(--texte-inverse);
+  font-weight: 700;
+}
+
+.bouton.primaire:hover { background: var(--accent-fonce); }
+
+.bouton.neutre-fonce {
+  background: var(--fond-secondaire);
+  border-color: var(--fond-secondaire);
+  color: var(--texte-inverse);
+}
+
+.bouton:disabled {
+  opacity: .55;
+  cursor: not-allowed;
+}
+
+.bouton.discret {
+  border: none;
+  background: transparent;
+  color: var(--petrole-700);
+  text-decoration: underline;
+  padding: 4px 6px;
+}
+
+.rangee-boutons {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-top: 12px;
+}
+
+/* ---------- Zones de dépôt (écran 2) ---------- */
+
+.zone-depot {
+  border: 2px dashed var(--bord);
+  border-radius: var(--rayon);
+  background: var(--surface-douce);
+  padding: 22px;
+  text-align: center;
+  color: var(--neutre-700);
+  margin-bottom: 12px;
+  transition: border-color .15s, background .15s;
+}
+
+.zone-depot.survol {
+  border-color: var(--accent);
+  background: var(--attention-50);
+}
+
+.zone-depot .titre-depot {
+  font-weight: 700;
+  color: var(--fond-secondaire);
+  margin-bottom: 4px;
+}
+
+.zone-depot .mini {
+  font-size: 12px;
+  color: var(--neutre-500);
+}
+
+/* Carte d'un fichier déposé, en attente d'affectation */
+.fichier-depose {
+  border: 1px solid var(--bord);
+  border-radius: var(--rayon);
+  padding: 10px 12px;
+  margin-bottom: 10px;
+  background: var(--surface);
+}
+
+.fichier-depose .tete {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.fichier-depose .nom {
+  font-weight: 600;
+  word-break: break-all;
+}
+
+.badge {
+  display: inline-block;
+  border-radius: 999px;
+  padding: 2px 10px;
+  font-size: 11px;
+  font-weight: 700;
+  border: 1px solid transparent;
+}
+
+.badge.type { background: var(--petrole-50); color: var(--petrole-700); }
+.badge.texte { background: var(--conforme-100); color: var(--conforme-700); }
+.badge.scan { background: var(--attention-100); color: var(--attention-700); }
+.badge.attente { background: var(--neutre-100); color: var(--neutre-700); }
+.badge.erreur { background: var(--alerte-100); color: var(--alerte-700); }
+
+.extrait {
+  font-size: 12px;
+  color: var(--neutre-600);
+  background: var(--surface-douce);
+  border-radius: 6px;
+  padding: 6px 8px;
+  margin-top: 6px;
+  max-height: 90px;
+  overflow: auto;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.fichier-depose .champs-ligne {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 8px;
+  margin-top: 8px;
+}
+
+/* ---------- Tableaux (écran validation) ---------- */
+
+.tableau-defilant { overflow-x: auto; }
+
+table.donnees {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+  background: var(--surface);
+}
+
+table.donnees th, table.donnees td {
+  border: 1px solid var(--bord);
+  padding: 6px 8px;
+  text-align: left;
+  vertical-align: top;
+}
+
+table.donnees th {
+  background: var(--fond-secondaire);
+  color: var(--texte-inverse);
+  font-weight: 600;
+}
+
+table.donnees td.numerique { text-align: right; font-variant-numeric: tabular-nums; }
+table.donnees td .input-table { width: 110px; }
+table.donnees input[type="text"], table.donnees input[type="number"], table.donnees input[type="date"] {
+  font: inherit;
+  padding: 4px 6px;
+  border: 1px solid var(--bord);
+  border-radius: 4px;
+  width: 100%;
+  min-width: 90px;
+}
+
+.montant-lettres {
+  font-style: italic;
+  color: var(--neutre-700);
+  font-size: 12px;
+}
+
+/* Voyant assurances : vert / orange / rouge */
+.voyant {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 2px solid rgba(0,0,0,.25);
+  vertical-align: middle;
+}
+.voyant.vert  { background: var(--vert); }
+.voyant.orange { background: var(--orange); }
+.voyant.rouge { background: var(--rouge); }
+
+.raisons {
+  margin: 6px 0 0;
+  padding-left: 18px;
+  font-size: 12px;
+  color: var(--alerte-700);
+}
+
+.fondement {
+  font-size: 11px;
+  color: var(--neutre-500);
+  margin-top: 4px;
+}
+
+/* ---------- Écran génération ---------- */
+
+.resultat-generation {
+  border: 1px solid var(--bord);
+  border-radius: var(--rayon);
+  background: var(--surface);
+  padding: 10px 14px;
+  margin-top: 12px;
+}
+
+.arborescence {
+  font-family: Consolas, "Courier New", monospace;
+  font-size: 13px;
+  white-space: pre-wrap;
+  margin: 0;
+}
+
+/* Panneau d'état des modules partenaires */
+.panneau-modules table { margin-top: 8px; }
+.statut-module { font-weight: 700; }
+.statut-module.charge { color: var(--vert); }
+.statut-module.attente { color: var(--orange); }
+.statut-module.erreur { color: var(--rouge); }
+
+/* ---------- Toasts ---------- */
+
+#toasts {
+  position: fixed;
+  bottom: 16px;
+  right: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  z-index: 60;
+  max-width: 420px;
+}
+
+.toast {
+  background: var(--fond-secondaire);
+  color: var(--texte-inverse);
+  border-radius: var(--rayon);
+  border-left: 5px solid var(--accent);
+  box-shadow: var(--ombre);
+  padding: 10px 14px;
+  font-size: 13px;
+}
+
+.toast.succes { border-left-color: var(--vert); }
+.toast.erreur { border-left-color: var(--rouge); }
+
+/* ---------- Divers ---------- */
+
+.message-attente {
+  background: var(--attention-100);
+  border: 1px solid var(--attention-300);
+  color: var(--attention-700);
+  border-radius: 6px;
+  padding: 8px 10px;
+  font-size: 13px;
+  margin: 6px 0;
+}
+
+.message-info {
+  background: var(--petrole-50);
+  border: 1px solid var(--petrole-200);
+  color: var(--petrole-800);
+  border-radius: 6px;
+  padding: 8px 10px;
+  font-size: 13px;
+  margin: 6px 0;
+}
+
+.entre-deux { color: var(--texte-discret); font-size: 12px; margin: 4px 0; }
+
+.ligne-actions { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+
+@media (max-width: 900px) {
+  body { font-size: 14px; }
+  #contenu { padding: 12px 10px 50px; }
+  .carte { padding: 12px; }
+  #etapes .etape { padding: 7px 9px; font-size: 12.5px; }
+  #etapes .etape .libelle-long { display: none; }
+}
+
+
+/* ─────────────────────────────────────────────────────────────────────────
+   Complétude des entreprises et pastilles d'état (SPEC § 6 ter)
+   Ajouté le 25/09/2026 : la saisie progressive affiche ce qui manque au lieu
+   de bloquer, et distingue une entreprise prête d'une entreprise incomplète.
+   ───────────────────────────────────────────────────────────────────────── */
+.ligne-completude {
+  margin: .35rem 0 .6rem;
+  font-size: .95rem;
+}
+.pastille {
+  display: inline-block;
+  padding: .1rem .55rem;
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: .85rem;
+  color: var(--texte-inverse);
+  margin-right: .45rem;
+}
+.pastille.vert { background: var(--conforme-600); }
+.pastille.orange { background: var(--attention-braise); }
+.champ-court { max-width: 5.5rem; }
+
+
+/* ─────────────────────────────────────────────────────────────────────────
+   Dossier partagé entre les postes (SPEC § 6 quinquies)
+   Liste des dossiers de la base, avec le dossier ouvert mis en évidence.
+   ───────────────────────────────────────────────────────────────────────── */
+.liste-dossiers { list-style: none; padding: 0; margin: .5rem 0; }
+.liste-dossiers li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: .75rem;
+  padding: .35rem 0;
+  border-bottom: 1px solid var(--bord);
+}
+.dossier-courant { font-weight: 600; color: var(--primaire); }
+
+/* ---------- Barre de dossier partagé (présente sur tous les écrans) ----------
+
+   Ajoutée après le constat, sur l'application déployée : « Je ne vois pas de fenêtre
+   de connexion, ni de navigation entre projets. » Deux causes, deux corrections.
+
+   1. Le panneau vivait au bas du DERNIER écran. La barre est maintenant dans la
+      coquille, au-dessus de tous les écrans (index.html : #barre-dossier).
+   2. Les champs du formulaire portaient la classe « champs-ligne », qui n'existait
+      que sous « .fichier-depose » : ils n'avaient donc AUCUN style et ressemblaient à
+      des fragments de formulaire, pas à une fenêtre de connexion. La classe est
+      désormais définie pour elle-même, ci-dessous.
+
+   Elle reste vide — donc invisible — tant qu'aucune base n'est configurée. */
+
+#barre-dossier:empty { display: none; }
+
+.barre-dossier {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--esp-2) var(--esp-3);
+  padding: 9px 18px;
+  background: var(--surface);
+  border-bottom: 1px solid var(--bord);
+  font-size: var(--fs-xs);
+}
+
+.barre-dossier .etiquette {
+  font-size: var(--fs-2xs);
+  font-weight: 700;
+  letter-spacing: .4px;
+  text-transform: uppercase;
+  color: var(--primaire);
+}
+
+.barre-dossier .etat-dossier { color: var(--texte-discret); }
+
+.barre-dossier input[type="email"],
+.barre-dossier input[type="password"],
+.barre-dossier select {
+  font: inherit;
+  padding: 5px 8px;
+  border: 1px solid var(--bord);
+  border-radius: var(--rayon-controle);
+  background: var(--surface);
+  color: var(--texte-sombre);
+}
+
+.barre-dossier input[type="email"] { min-width: 15rem; }
+.barre-dossier input[type="password"] { min-width: 10rem; }
+.barre-dossier select { min-width: 20rem; max-width: 36rem; }
+
+.barre-dossier input:focus,
+.barre-dossier select:focus {
+  outline: 2px solid var(--accent);
+  outline-offset: 0;
+  border-color: var(--accent);
+}
+
+.barre-dossier .bouton { padding: 5px 11px; font-size: var(--fs-xs); }
+.barre-dossier summary { cursor: pointer; color: var(--petrole-700); }
+.barre-dossier details[open] { flex-basis: 100%; }
+.barre-dossier .message-ligne { flex-basis: 100%; margin: 0; }
+
+/* Rangée de champs suivie d'une action : formulaire de connexion, changement de mot
+   de passe. Définie POUR ELLE-MÊME — elle ne l'était que sous .fichier-depose. */
+.champs-ligne {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+}
+
+/* ---------- Mode d'emploi (bouton de l'en-tête, présent sur tous les écrans) ----------
+
+   Une fenêtre par-dessus l'écran courant plutôt qu'une cinquième étape : la navigation
+   décrit un ENCHAÎNEMENT de production, et l'aide n'en est pas une — on la consulte au
+   milieu de n'importe quelle étape, puis on reprend où on était. */
+
+.bouton-aide {
+  font: inherit;
+  font-size: var(--fs-xs);
+  padding: 5px 12px;
+  border: 1px solid rgba(255, 255, 255, .35);
+  border-radius: var(--rayon-controle);
+  background: transparent;
+  color: var(--texte-sur-sombre-fort);
+  cursor: pointer;
+}
+
+.bouton-aide:hover { background: rgba(255, 255, 255, .12); }
+
+.aide-voile {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  background: rgba(13, 21, 32, .55);
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 3vh 16px;
+  overflow: auto;
+}
+
+.aide-fenetre {
+  background: var(--surface);
+  border-radius: var(--rayon-carte);
+  box-shadow: var(--elevation-3);
+  width: min(920px, 100%);
+  padding: 0 0 var(--esp-5);
+}
+
+.aide-entete {
+  position: sticky;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--esp-4);
+  padding: var(--esp-4) var(--esp-5);
+  background: var(--surface);
+  border-bottom: 1px solid var(--bord);
+  border-radius: var(--rayon-carte) var(--rayon-carte) 0 0;
+}
+
+.aide-entete h2 { margin: 0; font-size: var(--fs-lg); color: var(--primaire); }
+
+.aide-corps { padding: var(--esp-4) var(--esp-5) 0; }
+
+.aide-corps h3 {
+  margin: var(--esp-5) 0 var(--esp-2);
+  padding-left: var(--esp-3);
+  border-left: 4px solid var(--petrole-600);
+  font-size: var(--fs-md);
+  color: var(--primaire);
+}
+
+.aide-corps h3:first-child { margin-top: var(--esp-3); }
+
+.aide-texte { margin: 0 0 var(--esp-3); }
+
+.aide-liste { margin: 0 0 var(--esp-3); padding-left: var(--esp-5); }
+.aide-liste li { margin-bottom: var(--esp-1); }
+
+.aide-etapes { list-style: none; counter-reset: aide; margin: 0 0 var(--esp-3); padding: 0; }
+
+.aide-etapes li {
+  counter-increment: aide;
+  position: relative;
+  padding-left: 2.2rem;
+  margin-bottom: var(--esp-3);
+}
+
+.aide-etapes li::before {
+  content: counter(aide);
+  position: absolute;
+  left: 0;
+  top: 1px;
+  width: 1.5rem;
+  height: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--rayon-plein);
+  background: var(--primaire);
+  color: var(--texte-inverse);
+  font-size: var(--fs-2xs);
+  font-weight: 700;
+}
+
+.aide-etape-titre { display: block; font-weight: 700; color: var(--texte-sombre); }
+.aide-etapes .aide-texte { display: block; color: var(--texte-discret); }
+
+.aide-question { margin-bottom: var(--esp-4); }
+.aide-question-titre { margin: 0; font-weight: 700; color: var(--texte-sombre); }
+.aide-question .aide-texte { margin: 2px 0 0; color: var(--texte-discret); }
+
+.aide-tableau { margin: 0 0 var(--esp-4); }
+
+/* ==================================================================== */
+/* Aide contextuelle — bulles, et bandeau d'avertissements               */
+/* Aucune couleur en dur : uniquement les jetons de css/tokens.css.      */
+/* ==================================================================== */
+
+/* Le titre et son bouton « ? » sur la même ligne, le bouton collé au texte
+   plutôt que repoussé au bord : une aide doit se lire comme appartenant au
+   titre qu'elle explique. */
+.titre-avec-aide {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.aide-ancre {
+  flex: 0 0 auto;
+  width: 1.15rem;
+  height: 1.15rem;
+  padding: 0;
+  border: 1px solid var(--bordure-forte);
+  border-radius: 50%;
+  background: var(--surface);
+  color: var(--texte);
+  font-family: var(--police-sans);
+  font-size: var(--fs-2xs);
+  font-weight: 600;
+  line-height: 1;
+  cursor: help;
+  opacity: 0.6;
+}
+
+.aide-ancre:hover,
+.aide-ancre:focus-visible,
+.aide-ancre[aria-expanded="true"] {
+  opacity: 1;
+  border-color: var(--petrole-600);
+  color: var(--petrole-900);
+  background: var(--petrole-50);
+}
+
+/* Positionnée par le script (position: fixed, coordonnées calculées) : une bulle
+   ancrée en absolute suivrait son parent défilant et sortirait de l'écran. */
+.aide-bulle {
+  position: fixed;
+  z-index: 60;
+  width: min(34rem, calc(100vw - 2rem));
+  max-height: min(26rem, calc(100vh - 6rem));
+  display: flex;
+  flex-direction: column;
+  background: var(--surface-haute);
+  border: 1px solid var(--bordure-forte);
+  border-radius: var(--rayon-net);
+  box-shadow: var(--elevation-3);
+}
+
+.aide-bulle-entete {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.5rem;
+  padding: 0.7rem 0.8rem 0.4rem;
+  border-bottom: 1px solid var(--bordure);
+}
+
+.aide-bulle-titre {
+  margin: 0;
+  font-size: var(--fs-md);
+  color: var(--petrole-900);
+}
+
+.aide-bulle-fermer {
+  flex: 0 0 auto;
+  border: 0;
+  background: transparent;
+  color: var(--neutre-600);
+  font-size: 1.1rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.aide-bulle-fermer:hover { color: var(--texte); }
+
+.aide-bulle-corps {
+  overflow-y: auto;
+  padding: 0.6rem 0.8rem;
+}
+
+.aide-bulle-corps > :first-child { margin-top: 0; }
+
+.aide-bulle-pied {
+  padding: 0.45rem 0.8rem 0.6rem;
+  border-top: 1px solid var(--bordure);
+}
+
+/* La chronologie du marché : les phases hors outil sont visiblement distinctes,
+   sans être traitées comme des défauts — c'est un périmètre, pas une erreur. */
+.aide-jalons {
+  margin: 0.4rem 0 0.8rem;
+  padding-left: 1.3rem;
+}
+
+.aide-jalon {
+  margin-bottom: 0.7rem;
+  padding-left: 0.3rem;
+  border-left: 3px solid var(--conforme-700);
+}
+
+.aide-jalon-partiel { border-left-color: var(--attention-600); }
+.aide-jalon-absent { border-left-color: var(--neutre-300); }
+
+.aide-jalon > span { display: block; }
+
+.aide-jalon-titre {
+  font-weight: 600;
+  color: var(--petrole-900);
+}
+
+.aide-jalon-couverture {
+  font-family: var(--police-mono);
+  font-size: var(--fs-2xs);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--neutre-600);
+}
+
+.aide-jalon-engage {
+  margin-top: 0.2rem;
+  padding: 0.3rem 0.45rem;
+  background: var(--attention-50);
+  border-radius: var(--rayon-net);
+}
+
+.aide-hors-ecran-titre {
+  margin: 1rem 0 0.3rem;
+  color: var(--petrole-900);
+}
+
+/* Section visée en arrivant d'une bulle : un repère bref, qui s'efface. */
+.aide-section-visee {
+  background: var(--info-50);
+  outline: 2px solid var(--petrole-300);
+  outline-offset: 2px;
+}
+
+/* --------------------------------------------------------------------- */
+/* Avertissements d'état : À L'ÉCRAN, jamais seulement dans l'aide.       */
+/* Ils occupent #bandeau, qui reste vide — donc invisible — quand il n'y  */
+/* a rien à signaler. Pas de place réservée, pas de bruit permanent.      */
+/* --------------------------------------------------------------------- */
+.avertissement {
+  display: block;
+  padding: 0.55rem 0.9rem;
+  border-bottom: 1px solid var(--bordure-forte);
+  font-size: var(--fs-md);
+}
+
+.avertissement-securite {
+  background: var(--alerte-50);
+  color: var(--alerte-700);
+  border-left: 5px solid var(--alerte-700);
+}
+
+.avertissement-attention {
+  background: var(--attention-50);
+  border-left: 5px solid var(--attention-600);
+}
+
+.avertissement-titre { display: block; }
+.avertissement-texte { display: block; }
+
+.avertissement-geste {
+  display: block;
+  margin-top: 0.2rem;
+  font-family: var(--police-mono);
+  font-size: var(--fs-2xs);
+}
+
+/* --------------------------------------------------------------------- */
+/* Fonctions indisponibles : carte qui n'existe que lorsqu'il y a un      */
+/* problème. Elle annonçait auparavant en permanence que tout allait      */
+/* bien, en nommant l'organisation interne de la construction.           */
+/* --------------------------------------------------------------------- */
+.carte-indisponible {
+  border-left: 5px solid var(--attention-600);
+  background: var(--attention-50);
+}
+
+.liste-indisponibles {
+  margin: 0.5rem 0;
+  padding-left: 1.2rem;
+}
+
+.liste-indisponibles li { margin-bottom: 0.35rem; }
+.liste-indisponibles span { display: block; }
+
+.indisponible-fonction { font-weight: 600; }
+
+.indisponible-malgre {
+  color: var(--neutre-600);
+  font-size: var(--fs-md);
+}
+
+/* Le détail technique est replié : il sert à réparer, pas à informer. */
+.indisponible-technique { margin-top: 0.6rem; }
+
+.indisponible-technique summary {
+  cursor: pointer;
+  color: var(--neutre-600);
+  font-size: var(--fs-2xs);
+}
+
+.indisponible-technique pre {
+  margin: 0.35rem 0 0;
+  padding: 0.4rem 0.55rem;
+  overflow-x: auto;
+  background: var(--surface);
+  border: 1px solid var(--bordure);
+  border-radius: var(--rayon-net);
+  font-family: var(--police-mono);
+  font-size: var(--fs-2xs);
+}

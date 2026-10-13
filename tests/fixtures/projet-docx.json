@@ -1,0 +1,158 @@
+{
+  "operation": {
+    "reference": "OP-2026-01",
+    "intitule": "AMENAGEMENT D'UN BATIMENT COMMERCIAL - SUPERMARCHE",
+    "adresse": "ZAC de l’Exemple",
+    "cp": "12350",
+    "ville": "VILLENEUVE-EXEMPLE",
+    "droc": "2025-04-14",
+    "dureePrevisionnelleMois": 7,
+    "pc": "DP 000 000 00 000",
+    "faitLe": "2025-04-03",
+    "lieuFait": "Villeclaire"
+  },
+  "maitreOuvrage": {
+    "raisonSociale": "SAS DISTRIBEX",
+    "representant": "M. Lou EXEMPLE",
+    "qualiteRepresentant": "Président",
+    "siren": "100000017",
+    "adresse": "2 route de l’Exemple",
+    "cp": "12350",
+    "ville": "VILLENEUVE-EXEMPLE"
+  },
+  "agence": {
+    "raisonSociale": "S.A.R.L. EXEMPLE ARCHITECTURE",
+    "forme": "S.A.R.L.",
+    "representant": "Camille Exemple",
+    "siren": "100000066",
+    "siret": "10000006600017",
+    "adresse": "1 rue de l’Exemple",
+    "cp": "12340",
+    "ville": "VILLECLAIRE",
+    "tel": "01 00 00 00 01",
+    "email": "contact@agence-exemple.example"
+  },
+  "entreprises": [
+    {
+      "id": "voltalis",
+      "raisonSociale": "VOLTALIS",
+      "forme": "S.A.S.",
+      "representant": "M. TEST Marc",
+      "qualiteRepresentant": "Gérant",
+      "siren": "100000041",
+      "siret": "10000004100024",
+      "adresse": "Rue du Vent-Test",
+      "cp": "12350",
+      "ville": "VILLENEUVE-EXEMPLE",
+      "lotNumero": "13",
+      "lotNom": "ELECTRICITE"
+    },
+    {
+      "id": "colorama",
+      "raisonSociale": "S.A.S. COLORAMA",
+      "representant": "M. MODELE Morgan",
+      "qualiteRepresentant": "Gérant",
+      "siren": "100000082",
+      "siret": "10000008200018",
+      "adresse": "80 traverse du Modèle",
+      "cp": "12780",
+      "ville": "MONTCLAIR-TEST",
+      "lotNumero": "08",
+      "lotNom": "PEINTURE"
+    },
+    {
+      "id": "carrelage-enattente",
+      "raisonSociale": "S.A.R.L. CARRELAGE MODELE",
+      "lotNom": "CARRELAGE"
+    }
+  ],
+  "devis": [
+    {
+      "entrepriseId": "voltalis",
+      "numero": "22041 v2",
+      "date": "2025-03-05",
+      "htBase": 560000,
+      "variantes": [],
+      "prorata": { "mode": "inclus" }
+    },
+    {
+      "entrepriseId": "colorama",
+      "numero": "DEV00000693",
+      "date": "2025-01-16",
+      "htBase": 84378.08,
+      "variantes": [],
+      "prorata": { "mode": "inclus" }
+    }
+  ],
+  "attestations": [],
+  "equipe": {
+    "architecteSignataire": "Camille Exemple",
+    "conducteursTravaux": ["Sacha Modele"]
+  },
+  "retenueGarantieTaux": 0.05,
+  "penalites": { "tauxJournalier": 250, "montantMaxPct": 5 },
+  "OS": [
+    { "entrepriseId": "voltalis", "numero": 1, "dateDebut": "2025-04-14" }
+  ],
+  "avenants": [],
+  "marche": {
+    "controleTechnique": {
+      "organisme": "CONTROLTECH",
+      "contact": "M. TEST",
+      "adresse": "10 allée de l’Exemple - 12500 Pontlevoy",
+      "tel": "01 00 00 00 05",
+      "email": "controle@controltech.example"
+    },
+    "sps": {
+      "organisme": "CONTROLTECH",
+      "contact": "Mme MODELE",
+      "adresse": "10 allée de l’Exemple - 12500 Pontlevoy",
+      "tel": "01 00 00 00 04",
+      "email": "sps@controltech.example"
+    }
+  },
+  "crc": {
+    "dateReunion": "2025-04-14",
+    "lieuReunion": "Agence, Villeclaire",
+    "intervenants": [
+      {
+        "role": "BET",
+        "nom": "CONTROLTECH",
+        "representant": "M. TEST",
+        "tel": "01 00 00 00 05",
+        "email": "controle@controltech.example"
+      },
+      {
+        "role": "SPS",
+        "nom": "CONTROLTECH",
+        "representant": "Mme MODELE",
+        "tel": "01 00 00 00 04",
+        "email": "sps@controltech.example"
+      }
+    ],
+    "contacts": {
+      "voltalis": { "tel": "01 00 00 00 02", "email": "contact@voltalis.example" },
+      "colorama": { "tel": "01 00 00 00 03", "email": "contact@colorama.example" }
+    },
+    "lotsNonAttribues": [
+      "LOT n° 14 - CLOISONS SECHES (clos technique)",
+      "LOT n° 15 - PISCINE (non arbitre)"
+    ],
+    "sections": [
+      {
+        "titre": "BATIMENT SUPERMARCHE",
+        "points": [
+          { "texte": "Le tarif vert est validé à 650 KVA pour le supermarché", "destinataire": "pour information" },
+          { "texte": "Transmettre les plans bétons (fondations, structure, planchers)", "destinataire": "groupe Exemple" },
+          { "texte": "Le bureau de contrôle et SPS sera CONTROLTECH", "destinataire": "DISTRIBEX" }
+        ]
+      },
+      {
+        "titre": "ETUDES",
+        "points": [
+          { "texte": "Nommer un coordinateur SSI", "destinataire": "DISTRIBEX -> IMMO TEST" }
+        ]
+      }
+    ]
+  }
+}

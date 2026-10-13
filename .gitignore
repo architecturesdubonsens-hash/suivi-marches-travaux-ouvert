@@ -1,0 +1,16 @@
+# Fichiers système
+desktop.ini
+Thumbs.db
+~$*
+.DS_Store
+
+# Dépendances et build : l'application n'en a pas besoin
+node_modules/
+dist/
+
+# Sorties des tests
+tests-output/
+outputs/
+
+# Divers
+*.tmp

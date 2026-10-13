@@ -1,0 +1,31 @@
+# Ce qui est PUBLIÉ sur l'adresse de l'application, et ce qui ne l'est pas.
+#
+# Principe : seule l'application est déployée. L'interface démarre vierge.
+#
+# Ce qui EST publié (nécessaire à l'exécution) :
+#   index.html, css/, js/ (moteur, générateurs, interface),
+#   vendor/ (docx, ExcelJS, JSZip, pdf.js — sans installation),
+#   gabarits/os-gabarit.xlsx et gabarits/avenant-gabarit.xlsx (les formulaires vides).
+
+# Jeu de données d'exemple : utile aux tests, inutile au service.
+donnees/
+
+# Schéma de la base et banc d'isolation : documentation d'installation, pas du service.
+db/
+
+# Documentation
+docs/
+SPEC.md
+README.md
+
+# Tests et sorties de tests : outils de développement, pas de production.
+tests/
+tests-output/
+
+# Divers
+bin/
+backups/
+.github/
+.gitignore
+.gitattributes
+*.avant-nettoyage

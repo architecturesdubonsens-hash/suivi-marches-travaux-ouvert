@@ -1,0 +1,87 @@
+/* ==========================================================================
+   tokens.css — jetons de la charte de la maison (v1.1.0)
+
+   Repris du jeu de jetons produit de l'agence (généré par design/build_tokens.py,
+   édité à la source puis relancé : ne pas inventer de valeur ici).
+
+   Trois familles de couleurs : pétrole (signature), ardoise (primaire et texte),
+   crème (fonds). Et quatre statuts sémantiques — conforme, attention, alerte,
+   info — qui portent le sens sans dépendre d'un dégradé.
+
+   Aucun préprocesseur, aucun build : ce fichier est chargé par index.html avant
+   app.css, qui ne fait que le consommer.
+   ========================================================================== */
+
+:root {
+  /* Pétrole — couleur de signature (bandeaux, repères) */
+  --petrole-50: #f5fbfc;  --petrole-100: #cceaf1; --petrole-200: #a0dbe8;
+  --petrole-300: #73cce0; --petrole-400: #45bfda; --petrole-500: #23a9c7;
+  --petrole-600: #18859e; --petrole-700: #0f6072; --petrole-800: #104a57;
+  --petrole-900: #0f363e; --petrole-950: #0c2227; --petrole-clair: #48b3c8;
+
+  /* Ardoise — primaire, texte, structures */
+  --ardoise-50: #f7f8fb;  --ardoise-100: #d9e1eb; --ardoise-200: #bbc9dc;
+  --ardoise-300: #9cb1ce; --ardoise-400: #7d99c0; --ardoise-500: #5d81b2;
+  --ardoise-600: #476a9b; --ardoise-700: #38557d; --ardoise-800: #293f5f;
+  --ardoise-900: #1b2a40; --ardoise-950: #0d1520;
+
+  /* Violet — réservé aux distinctions de plan, jamais au statut */
+  --violet-50: #f9f5fd;   --violet-100: #e8d8f8; --violet-300: #c89af4;
+  --violet-500: #a855f7;  --violet-700: #7016c6; --violet-900: #37115b;
+
+  /* Neutre — textes discrets, bordures, fonds d'attente */
+  --neutre-50: #f8f8f9;   --neutre-100: #dbdee3; --neutre-200: #bdc4cd;
+  --neutre-300: #9fa9b7;  --neutre-400: #818ea2; --neutre-500: #64748b;
+  --neutre-600: #556274;  --neutre-700: #46505e; --neutre-800: #373e48;
+  --neutre-900: #272b32;  --neutre-950: #17191c;
+
+  /* Crème — fonds clairs (fond de page du mode produit) */
+  --creme-50: #faf9f8;    --creme-100: #f3f1ed; --creme-200: #e0dbd1;
+  --creme-300: #ccc4b5;   --creme-500: #a4977e; --creme-700: #716651;
+  --creme-900: #39342a;
+
+  /* Statuts — le sens est porté par la couleur ET par un libellé, jamais seuls */
+  --conforme-50: #f5fcfc; --conforme-100: #c5f0ec; --conforme-600: #0f766e;
+  --conforme-700: #10615a;
+  --attention-50: #fdf8f5; --attention-100: #f5dcc9; --attention-200: #efc09b;
+  --attention-300: #eca36b; --attention-400: #eb8639; --attention-500: #df6a11;
+  --attention-600: #b45309; --attention-700: #8e450d; --attention-braise: #ff8325;
+  --alerte-50: #fcf5f5;   --alerte-100: #f2d0d0; --alerte-600: #b91c1c;
+  --alerte-700: #911b1b;  --alerte-braise: #ff3535;
+  --info-50: #f5f7fc;     --info-100: #d4dcf3; --info-600: #1d4ed8;
+
+  /* Typographie : Plus Jakarta Sans quand elle est installée, sinon la pile système */
+  --police-sans: 'Plus Jakarta Sans', ui-sans-serif, system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  --police-mono: 'JetBrains Mono', ui-monospace, 'Cascadia Mono', Consolas, 'Courier New', monospace;
+
+  /* Échelle typographique et espacements */
+  --fs-2xs: 0.75rem; --fs-xs: 0.8125rem; --fs-sm: 0.875rem; --fs-base: 1rem;
+  --fs-md: 1.125rem; --fs-lg: 1.375rem; --fs-xl: 1.75rem;
+  --esp-1: 4px; --esp-2: 8px; --esp-3: 12px; --esp-4: 16px; --esp-5: 24px; --esp-6: 32px;
+
+  /* Rayons et élévations */
+  --rayon-net: 2px; --rayon-controle: 4px; --rayon-carte: 8px; --rayon-plein: 9999px;
+  --elevation-1: 0 1px 2px 0 rgb(15 23 42 / .06);
+  --elevation-2: 0 2px 6px -1px rgb(15 23 42 / .10), 0 1px 3px -1px rgb(15 23 42 / .06);
+  --elevation-3: 0 8px 20px -4px rgb(15 23 42 / .14), 0 3px 8px -3px rgb(15 23 42 / .08);
+
+  /* Sémantique du mode produit (clair) */
+  --fond: var(--creme-100);
+  --surface: #ffffff;
+  --surface-haute: #ffffff;
+  --bordure: #d8d4d4;
+  --bordure-forte: var(--neutre-500);
+  --texte: var(--ardoise-950);
+  --texte-attenue: var(--neutre-600);
+  --texte-inverse: #ffffff;
+  --primaire: var(--ardoise-700);
+  --primaire-survol: var(--ardoise-800);
+  --accent: var(--ardoise-700);
+  --accent-survol: var(--ardoise-800);
+  --accent-texte: #ffffff;
+
+  /* Contexte sombre (bandeau d'en-tête) */
+  --sur-sombre: var(--ardoise-900);
+  --texte-sur-sombre: var(--neutre-300);
+  --texte-sur-sombre-fort: #ffffff;
+}

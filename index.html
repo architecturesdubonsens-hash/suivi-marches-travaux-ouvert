@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<!-- index.html
+     Application web statique « Suivi des Marchés de Travaux ».
+     Aucun build, aucune dépendance hors vendor/ : un navigateur suffit.
+     Le shell ne contient que l'en-tête (charte : bleu marine + bandeau
+     orange), la navigation par étapes et les points d'ancrage ; tous les
+     écrans sont rendus par js/app.js (module ES). -->
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Suivi des Marchés de Travaux</title>
+  <!-- Jetons de la charte (couleurs, polices, rayons) : chargés AVANT la feuille
+       de style, qui ne fait que les consommer. Aucune valeur de couleur n'est
+       écrite en dur dans app.css. -->
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/app.css">
+</head>
+<body>
+  <header id="entete">
+    <div class="marque">
+      <span class="titre">Suivi des marchés de travaux</span>
+      <span class="sous-titre">Marchés · OS · CRC · Avenants</span>
+    </div>
+    <nav id="etapes" aria-label="Étapes du workflow"></nav>
+    <div class="zone-outils">
+      <button id="bouton-aide" class="bouton-aide" type="button" aria-haspopup="dialog">Mode d'emploi</button>
+      <span id="sauvegarde-indicateur">Initialisation…</span>
+    </div>
+  </header>
+  <div id="bandeau"></div>
+  <!-- Barre de dossier partagé : présente sur TOUS les écrans. Se connecter et choisir
+       une opération sont les PREMIÈRES choses qu'on fait — le panneau vivait au
+       contraire au bas du dernier écran, où personne ne le trouvait. Elle reste vide,
+       donc invisible, tant qu'aucune base n'est configurée. -->
+  <div id="barre-dossier"></div>
+
+  <main id="contenu">
+    <noscript>
+      <p>Cette application a besoin de JavaScript (modules ES natifs, aucune
+      installation). Activez JavaScript puis rechargez la page.</p>
+    </noscript>
+  </main>
+
+  <div id="toasts" aria-live="polite"></div>
+
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,166 @@
+{
+  "_notice": "Fixture hermétique de tests/gen-xlsx.mjs : projet entièrement fictif et autonome, aucune lecture de fichier à l'exécution. Dates au format ISO ; elles sont converties en séries 1904 par les générateurs. La fixture consomme UNIQUEMENT les contrats SPEC §8 (montantAvecVariantes, appliquerProrata, chainageAvenant). Devis.delaisRealisation porte les délais de réalisation (engagement contractuel de l'offre retenue) ; Entreprise.lotNumero est porté par la SPEC §2.",
+  "operation": {
+    "reference": "OP-2026-01",
+    "intitule": "REFECTION DE LA COUVERTURE, DEPOLLUTION, RENFORCEMENT ET INSTALLATION D'UNE CENTRALE PHOTOVOLTAIQUE",
+    "adresse": "8 rue du Modèle",
+    "cp": "12000",
+    "ville": "Hautmont-test",
+    "droc": "2025-03-05",
+    "dureePrevisionnelleMois": 6,
+    "pc": "PC0000000D0000",
+    "faitLe": "2025-03-27",
+    "lieuFait": "Villeclaire"
+  },
+  "maitreOuvrage": {
+    "raisonSociale": "S.C.I. DU MODELE",
+    "representant": "Dominique Test",
+    "qualiteRepresentant": "Co dirigeant",
+    "siren": "100000033",
+    "adresse": "8 rue du Modèle",
+    "cp": "12000",
+    "ville": "Hautmont-test"
+  },
+  "agence": {
+    "raisonSociale": "S.A.R.L. EXEMPLE ARCHITECTURE",
+    "forme": "S.A.R.L.",
+    "representant": "Camille Exemple",
+    "siren": "100000066",
+    "siret": "10000006600019",
+    "adresse": "1 rue de l’Exemple",
+    "cp": "12340",
+    "ville": "Villeclaire",
+    "tel": "01 00 00 00 01",
+    "email": "contact@agence-exemple.example"
+  },
+  "entreprises": [
+    {
+      "id": "ent-colorama",
+      "raisonSociale": "S.A.S. COLORAMA",
+      "forme": "S.A.S",
+      "representant": "M. MODELE Morgan",
+      "qualiteRepresentant": "gérant",
+      "siren": "100000082",
+      "siret": "10000008200014",
+      "adresse": "80 traverse du Modèle",
+      "cp": "12780",
+      "ville": "MONTCLAIR-TEST",
+      "lotNom": "PEINTURE",
+      "lotNumero": "12"
+    },
+    {
+      "id": "ent-desamia",
+      "raisonSociale": "S.A.S. DESAMIA",
+      "forme": "S.A.S",
+      "representant": "M. Test Robin",
+      "qualiteRepresentant": "Président",
+      "siren": "100000074",
+      "siret": "10000007400017",
+      "adresse": "1 ROUTE DE L’EXEMPLE",
+      "cp": "12351",
+      "ville": "BASVILLE",
+      "lotNom": "COUVERTURE",
+      "lotNumero": "02"
+    }
+  ],
+  "devis": [
+    {
+      "entrepriseId": "ent-colorama",
+      "numero": "DEV00000693",
+      "date": "2025-01-16",
+      "htBase": 84378.08,
+      "delaisRealisation": "avril à juillet 2025",
+      "variantes": [],
+      "prorata": {
+        "mode": "inclus"
+      }
+    },
+    {
+      "entrepriseId": "ent-desamia",
+      "numero": "22041 v2",
+      "date": "2025-03-05",
+      "htBase": 97133.57,
+      "delaisRealisation": "mars avril mai 2025",
+      "variantes": [],
+      "prorata": {
+        "mode": "inclus"
+      }
+    }
+  ],
+  "attestations": [],
+  "equipe": {
+    "architecteSignataire": "Camille Exemple",
+    "conducteursTravaux": [
+      "Alex Modele"
+    ]
+  },
+  "retenueGarantieTaux": 0.05,
+  "penalites": {
+    "tauxJournalier": 300,
+    "montantMaxPct": 0.1
+  },
+  "OS": [
+    {
+      "entrepriseId": "ent-colorama",
+      "numero": 1,
+      "dateDebut": "2025-04-28"
+    },
+    {
+      "entrepriseId": "ent-desamia",
+      "numero": 1,
+      "dateDebut": "2025-03-05"
+    }
+  ],
+  "avenants": [
+    {
+      "numero": 1,
+      "objet": "Reprise de la couverture zinc - devis du 27/03/2025",
+      "entrepriseId": "ent-desamia",
+      "lignes": [
+        {
+          "libelle": "Reprise zinc rive est et remplacement des arêtiers (devis du 27/03/2025)",
+          "montant": 38682.1
+        }
+      ],
+      "modificationDelais": null
+    },
+    {
+      "numero": 2,
+      "objet": "Lanterneaux supplémentaires et déduit acrotère",
+      "entrepriseId": "ent-desamia",
+      "lignes": [
+        {
+          "libelle": "Pose de 6 lanterneaux supplémentaires",
+          "montant": 2000,
+          "sens": "plus"
+        },
+        {
+          "libelle": "Déduit dressage acrotère nord",
+          "montant": 500,
+          "sens": "moins"
+        }
+      ],
+      "modificationDelais": {
+        "libelle": "Report de la date d'achèvement des travaux au 30/09/2025"
+      }
+    },
+    {
+      "numero": 3,
+      "objet": "Motoréduction porte sectionnelle et régularisation",
+      "entrepriseId": "ent-desamia",
+      "lignes": [
+        {
+          "libelle": "Fourniture et pose motoréduction porte sectionnelle",
+          "montant": 1000,
+          "sens": "plus"
+        },
+        {
+          "libelle": "Déduit reprise déjà facturée en situation",
+          "montant": 250,
+          "sens": "moins"
+        }
+      ],
+      "modificationDelais": null
+    }
+  ]
+}
