@@ -454,7 +454,7 @@ export const SECTIONS = [
       ["p", "À partir d'une saisie UNIQUE, elle produit le marché de travaux, les ordres de service, le CRC et les "
         + "fiches d'avenant — dans les gabarits réels de l'agence. Aucune donnée n'est ressaisie d'un document à l'autre."],
       ["p", "Elle fonctionne sans installation et sans connexion. Le dossier vit dans le navigateur ; il peut aussi être "
-        + "partagé entre les postes par la base de l'agence (voir « Dossier partagé »)."],
+        + "partagé entre les postes par la base partagée (voir « Dossier partagé »)."],
       ["p", "Elle couvre la passation et le suivi des avenants. Elle s'arrête avant la réception : voir « Le marché "
         + "dans le temps » pour ce qui reste à tenir hors outil."],
     ],
@@ -495,7 +495,7 @@ export const SECTIONS = [
       ["p", "La barre « Dossier partagé » est visible sur TOUS les écrans, en haut. C'est là, et nulle part ailleurs, "
         + "qu'on se connecte et qu'on choisit une opération."],
       ["ul", [
-        "Se connecter — courriel et mot de passe de l'agence. Sans connexion, tout continue de fonctionner : le dossier "
+        "Se connecter — courriel et mot de passe de votre compte (« Créer un compte » si vous n'en avez pas encore). Sans connexion, tout continue de fonctionner : le dossier "
           + "reste simplement dans ce navigateur.",
         "Choisir un dossier — la liste déroulante donne les dossiers déjà enregistrés dans la base.",
         "Enregistrer — « Créer dans la base » la première fois, « Enregistrer » ensuite. Le numéro de version s'affiche à côté.",
@@ -554,9 +554,13 @@ export const SECTIONS = [
     blocs: [
       ["cle", "Je ne vois pas où me connecter.", "La barre « Dossier partagé » est en haut de l'écran, sur les quatre "
         + "étapes. Elle n'apparaît pas si aucune base n'est configurée : dans ce cas l'application est purement locale."],
-      ["cle", "Mes modifications sont-elles enregistrées ?", "Oui, automatiquement, dans ce navigateur — l'indicateur "
-        + "en haut à droite donne l'heure du dernier enregistrement. Pour les partager entre postes, il faut en plus "
-        + "« Enregistrer » dans la barre du haut."],
+      ["cle", "Mes modifications sont-elles enregistrées ?", "Oui, automatiquement, mais UNIQUEMENT dans ce navigateur, "
+        + "sur ce poste : l'indicateur en haut à droite donne l'heure du dernier enregistrement. Vider les données du site, "
+        + "changer d'ordinateur ou ouvrir une fenêtre de navigation privée vous ferait perdre le dossier."],
+      ["cle", "Comment sauvegarder mon dossier, ou le reprendre sur un autre poste ?", "Exportez-le : bouton « Exporter le "
+        + "dossier (JSON) », en haut de l'écran Configuration (et à la dernière étape). Conservez le fichier obtenu. Pour "
+        + "reprendre, « Importer un dossier (JSON) » : l'import remplace le dossier en cours, après confirmation. Pour le "
+        + "retrouver sans fichier sur plusieurs postes, il faut une base partagée : voir « Dossier partagé »."],
       ["cle", "Puis-je travailler sans connexion internet ?", "Oui. Le dossier reste dans le navigateur, et "
         + "l'enregistrement dans la base échoue avec un message clair. Rien n'est perdu."],
       ["cle", "Puis-je tester depuis le Mac du bureau ?", "Oui, par l'adresse de l'application : rien à installer. "

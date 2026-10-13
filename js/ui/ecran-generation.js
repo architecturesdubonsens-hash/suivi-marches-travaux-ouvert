@@ -13,6 +13,8 @@
 import { el, toast, fmtEuros, fmtDate, telecharger, slug } from "./helpers.js";
 import { titreAide } from "./bulle.js";
 import { boutonsSauvegarde } from "./sauvegarde-ui.js";
+import { texteSauvegardeLocale, boutonsExportImport } from "./sauvegarde-locale.js";
+import { stockagePartageConfigure } from "../config.js";
 import { chargerScript } from "../import-pdf.js";
 import { MODULES_PARTENAIRES, construireIndicateur } from "./etat-modules.js";
 // Dossier partagé entre les postes (SPEC § 6 quinquies) : connexion, liste des dossiers
@@ -287,34 +289,6 @@ export function afficher(conteneur, ctx) {
     boutonGenerer.disabled = false;
   });
 
-  // Export / import de l'état (transfert multi-postes, SPEC §6).
-  const boutonExport = el("button", { classe: "bouton", texte: "Exporter l'état (JSON)" });
-  boutonExport.addEventListener("click", () => {
-    const json = ctx.services.etat && typeof ctx.services.etat.exporterJSON === "function"
-      ? ctx.services.etat.exporterJSON(projet)
-      : JSON.stringify(projet, null, 2);
-    telecharger(new Blob([json], { type: "application/json" }), "PROJET-" + (slug(projet.operation && projet.operation.reference) || "etat") + ".json");
-  });
-  const inputImport = el("input", { type: "file", accept: "application/json,.json", style: "display:none" });
-  inputImport.addEventListener("change", async () => {
-    const fichier = inputImport.files[0];
-    inputImport.value = "";
-    if (!fichier) return;
-    try {
-      const texte = await fichier.text();
-      let projetImporte;
-      if (ctx.services.etat && typeof ctx.services.etat.importerJSON === "function") {
-        projetImporte = ctx.services.etat.importerJSON(texte);
-      } else {
-        projetImporte = JSON.parse(texte);
-      }
-      ctx.remplacerProjet(projetImporte);
-      toast("État importé : " + fichier.name, "succes");
-    } catch (erreur) {
-      toast("Import impossible : " + (erreur && erreur.message ? erreur.message : erreur), "erreur");
-    }
-  });
-
   conteneur.replaceChildren(
     el("section", { classe: "carte" },
       titreAide("h2", "Génération 1-clic", "generation"),
@@ -329,13 +303,14 @@ export function afficher(conteneur, ctx) {
       blocAvenants(ctx),
     ),
     el("section", { classe: "carte" },
-      el("h2", { texte: "Transfert multi-postes" }),
-      el("p", { classe: "aide", texte: "L'état du projet s'enregistre automatiquement (IndexedDB). Exportez-le en JSON pour le poursuivre sur un autre poste, sans serveur." }),
-      el("div", { classe: "rangee-boutons" }, boutonExport, el("button", { classe: "bouton", texte: "Importer un état (JSON)", onClick: () => inputImport.click() }), inputImport),
+      el("h2", { texte: "Sauvegarde et transfert" }),
+      el("p", { classe: "aide", texte: texteSauvegardeLocale().paragraphes.join(" ") }),
+      boutonsExportImport(ctx),
       // Les deux boutons ci-dessus ne portent QUE le dossier ouvert. La sauvegarde, elle,
       // prend tous les dossiers de la base en une fois — c'est une autre opération, et
       // les confondre était le moyen le plus sûr de ne jamais sauvegarder.
-      boutonsSauvegarde(() => afficher(conteneur, ctx)),
+      // Sans base partagée configurée, ces deux boutons ne pourraient rien faire : on ne les montre pas.
+      stockagePartageConfigure() ? boutonsSauvegarde(() => afficher(conteneur, ctx)) : null,
     ),
     // Rend null quand les huit fonctions sont disponibles : el() ignore null, donc la
     // carte DISPARAÎT au lieu d'annoncer en permanence que tout va bien.

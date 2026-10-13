@@ -32,7 +32,7 @@
 //   creerStockageIndexedDB() — l'implémentation actuelle (navigateur), défaut
 //     de sauvegarderProjet()/chargerProjet(), dont la signature ne bouge pas ;
 //   creerStockageMemoire() — Map en mémoire, adaptateur des tests Node.
-// COMMENT S'ÉCRIRA LE SECOND ADAPTATEUR (base de données de l'agence,
+// COMMENT S'ÉCRIRA LE SECOND ADAPTATEUR (base de données partagée,
 // Supabase/Postgres) sans toucher aux générateurs ni à l'interface :
 //   1. écrire creerStockageAgence() qui renvoie les MÊMES quatre méthodes
 //      (mêmes promesses, mêmes erreurs explicites en français) ;
@@ -640,7 +640,7 @@ function arrondiMontant(x) {
 //   lister() -> Promise<Projet[]>       supprimer(id) -> Promise<void>
 // Deux adaptateurs l'implémentent dans ce module : IndexedDB (navigateur,
 // défaut de sauvegarderProjet()/chargerProjet()) et mémoire (tests Node).
-// Le SECOND adaptateur (base de données de l'agence) s'écrira sans toucher
+// Le SECOND adaptateur (base de données partagée) s'écrira sans toucher
 // aux générateurs ni à l'interface — recette complète en tête de module.
 // --------------------------------------------------------------------------
 
@@ -802,14 +802,14 @@ export function creerStockageMemoire() {
 
 // Adaptateur PAR DÉFAUT du port : IndexedDB, créé à la première utilisation.
 // definirStockageParDefaut() est le SEUL point de branchement d'un autre
-// adaptateur (base de l'agence, adaptateur mémoire des tests) — les
+// adaptateur (base partagée, adaptateur mémoire des tests) — les
 // générateurs et l'interface, qui appellent sauvegarderProjet() /
 // chargerProjet(), ne savent jamais quel adaptateur est branché.
 let adaptateurDefaut = null;
 
 /**
  * Branche un adaptateur du port de stockage comme défaut (recette du second
- * adaptateur, base de l'agence : une ligne au démarrage, rien d'autre à
+ * adaptateur, base partagée : une ligne au démarrage, rien d'autre à
  * changer). Vérifie que l'objet porte bien les QUATRE méthodes du port.
  * @param {{charger: Function, sauvegarder: Function, lister: Function, supprimer: Function}} adaptateur
  */
