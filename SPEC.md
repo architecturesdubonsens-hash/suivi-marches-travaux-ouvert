@@ -26,6 +26,9 @@ Défini dans `js/etat.js`, types en JSDoc (pas de TypeScript). Champs du modèle
 Agence        { raisonSociale, forme, representant, siren, siret, adresse, cp, ville, tel, email, titreBloc }
 MaitreOuvrage { raisonSociale, representant, qualiteRepresentant, siren, adresse, cp, ville }
 lieuFait, coutTravauxHT, ouvertureChantier, ouvrageSoumis }
+                // pcDelivreLe : date de délivrance du permis de construire (page 1, libellé « Délivré le »),
+                //   AAAA-MM-JJ comme droc et faitLe ; null si inconnue — jamais la date du jour, jamais inventée.
+                //   Ajouté le 14/10/2026 à la demande de l'utilisateur ; n'alimente aucun document généré.
                 // ouvertureChantier : date réelle d'ouverture de chantier (annexe I, art. A. 243-1). À défaut,
                 //   controler() présume la DROC et le DIT dans une raison [info] qui ne dégrade pas le voyant.
                 // ouvrageSoumis : true (art. L. 241-1) | false (art. L. 243-1-1) | null si inconnu. Il choisit
