@@ -19,13 +19,36 @@
 import { el } from "./helpers.js";
 import { stockagePartageConfigure } from "../config.js";
 import { reglagesCourants } from "./panneau-partage.js";
+import { fichiersEnAttente } from "./ecran-depot.js";
 
 /**
  * Avertissements en vigueur, lus à l'instant.
  * @returns {Array<{cle:string, gravite:'securite'|'attention', titre:string, texte:string, geste:string}>}
  */
 export function avertissementsCourants() {
-  return [];
+  const liste = [];
+
+  // FICHIERS DÉPOSÉS MAIS PAS AJOUTÉS (défaut signalé le 14/10/2026 : « 0 devis chargé et 0
+  // entreprise » après le dépôt de PDF). Les trois conditions sont réunies : l'état est LU (les
+  // cartes de l'écran Dépôt), il est anormal pour qui vient de déposer, et le geste existe — le
+  // bouton d'ajout de chaque carte. Le bandeau est rendu à CHAQUE écran : c'est aux étapes
+  // Validation et Génération que le décompte 0 / 0 surprend, et non à l'étape où l'on dépose.
+  const attente = fichiersEnAttente();
+  if (attente.total > 0) {
+    const un = attente.total === 1;
+    const detail = [attente.devis ? attente.devis + " devis" : "",
+      attente.pieces ? attente.pieces + (attente.pieces === 1 ? " pièce" : " pièces") : ""].filter(Boolean).join(", ");
+    liste.push({
+      cle: "fichiers-deposes-non-ajoutes",
+      gravite: "attention",
+      titre: "À finir à l'étape 2",
+      texte: attente.total + (un ? " fichier déposé (" : " fichiers déposés (") + detail
+        + (un ? ") n'est pas encore ajouté au dossier : il n'y compte pas, et ne donne ni devis ni entreprise." :
+          ") ne sont pas encore ajoutés au dossier : ils n'y comptent pas, et ne donnent ni devis ni entreprise."),
+      geste: "Choisissez l'entreprise de chaque fichier, puis cliquez sur « Ajouter ce devis » ou « Ajouter cette pièce ».",
+    });
+  }
+  return liste;
 }
 
 /**
