@@ -113,6 +113,16 @@ await cas('dates JJ/MM/AAAA -> AAAA-MM-JJ : droc, faitLe, valideDu/valideAu, dat
   assert.equal(r.crc.dateReunion, '2025-04-01', 'dateReunion (extension CRC) normalisée');
 });
 
+await cas('pcDelivreLe (date de délivrance du permis, page 1) : défaut inconnu, JJ/MM/AAAA -> AAAA-MM-JJ, dossier ancien toléré', () => {
+  assert.equal(creerProjetVide().operation.pcDelivreLe, null, 'défaut null : date inconnue, jamais inventée');
+  const base = { maitreOuvrage: { raisonSociale: 'S.A.S. DISTRIBEX' }, agence: { raisonSociale: 'X' } };
+  const r = importerJSON(JSON.stringify({ ...base, operation: { reference: 'OP-2026-01', pc: 'PC 031 123 25 A0001', pcDelivreLe: '12/03/2025' } }));
+  assert.equal(r.operation.pcDelivreLe, '2025-03-12', 'pcDelivreLe normalisée comme droc et faitLe');
+  assert.equal(r.operation.pc, 'PC 031 123 25 A0001', 'le numéro du permis n\'est pas altéré');
+  const ancien = importerJSON(JSON.stringify({ ...base, operation: { reference: 'OP-2026-01', pc: 'PC 1' } }));
+  assert.ok(ancien.operation.pcDelivreLe == null || ancien.operation.pcDelivreLe === '', 'dossier enregistré avant ce champ : toléré, valeur vide');
+});
+
 await cas('défauts complétés à l\'import : RG, pénalités, listes, équipe', () => {
   const r = importerJSON(JSON.stringify({ operation: {}, maitreOuvrage: {}, agence: {} }));
   assert.equal(r.retenueGarantieTaux, 0.05, 'RG par défaut');

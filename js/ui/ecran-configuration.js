@@ -89,6 +89,7 @@ export function afficher(conteneur, ctx) {
       champProjet(projet, majProjet, "operation.droc", "DROC (début des travaux)", { type: "date" }),
       champProjet(projet, majProjet, "operation.dureePrevisionnelleMois", "Durée prévisionnelle (mois)", { type: "number", min: "0", step: "1" }),
       champProjet(projet, majProjet, "operation.pc", "N° de permis de construire"),
+      champProjet(projet, majProjet, "operation.pcDelivreLe", "Délivré le", { type: "date" }),
       champProjet(projet, majProjet, "operation.faitLe", "Fait le (date OS/MT)", { type: "date" }),
       champProjet(projet, majProjet, "operation.lieuFait", "Fait à (lieu)"),
     ));

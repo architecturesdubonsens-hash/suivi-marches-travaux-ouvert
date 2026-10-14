@@ -33,7 +33,7 @@ import { MODULES_PARTENAIRES, symbolesManquants } from "./ui/etat-modules.js";
  * n'est pas livré, et pour compléter un état importé partiel. */
 function creerProjetLocal() {
   return {
-    operation: { reference: "", intitule: "", adresse: "", cp: "", ville: "", droc: "", dureePrevisionnelleMois: null, pc: "", faitLe: "", lieuFait: "" },
+    operation: { reference: "", intitule: "", adresse: "", cp: "", ville: "", droc: "", dureePrevisionnelleMois: null, pc: "", pcDelivreLe: "", faitLe: "", lieuFait: "" },
     maitreOuvrage: { raisonSociale: "", representant: "", qualiteRepresentant: "", siren: "", adresse: "", cp: "", ville: "" },
     agence: { raisonSociale: "", forme: "", representant: "", siren: "", siret: "", adresse: "", cp: "", ville: "", tel: "", email: "" },
     entreprises: [],

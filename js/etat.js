@@ -94,7 +94,7 @@ const MARCHE_VIDE = () => ({
 // Champs du modèle dont la valeur est une date (utilisés par la normalisation).
 // 'remplaceLe' (cycle de vie des pièces, SPEC §6 quater) y figure : il suit le
 // même canon « AAAA-MM-JJ », conversion « JJ/MM/AAAA » incluse à l'import.
-const CHAMPS_DATES = ['date', 'dateDebut', 'dateReunion', 'valideDu', 'valideAu', 'droc', 'faitLe', 'remplaceLe'];
+const CHAMPS_DATES = ['date', 'dateDebut', 'dateReunion', 'valideDu', 'valideAu', 'droc', 'faitLe', 'pcDelivreLe', 'remplaceLe'];
 
 /**
  * Identifiant de projet (chaîne). crypto.randomUUID() quand disponible
@@ -220,6 +220,7 @@ export function creerProjetVide() {
       ouvertureChantier: null, // date réelle d'ouverture de chantier (annexe I art. A. 243-1) ; à défaut controler() présume la DROC et le signale
       ouvrageSoumis: null, // true (art. L. 241-1) | false (art. L. 243-1-1) | null : choisit le seuil de coût applicable
       pc: null,
+      pcDelivreLe: null, // date de délivrance du permis de construire (page 1, « Délivré le ») ; null = inconnue, jamais inventée
       faitLe: null,
       lieuFait: AGENCE_PAR_DEFAUT.lieuFait,
     },
