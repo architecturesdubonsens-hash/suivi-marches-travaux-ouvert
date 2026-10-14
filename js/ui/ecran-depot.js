@@ -28,6 +28,21 @@ const depots = [];
 /** Id interne de carte (préfixe stable pour retrouver les noeuds). */
 let compteurDepot = 0;
 
+/**
+ * Fichiers lus et déposés, mais PAS encore ajoutés au dossier. Déposer un PDF ne crée qu'une carte
+ * d'interface : le devis et son entreprise n'entrent dans le projet qu'au clic sur « Ajouter ce
+ * devis » (ou « Ajouter cette pièce »). Lu par js/ui/avertissements.js pour que l'écart soit dit à
+ * l'écran — sans cela l'étape Génération affichait « 0 entreprise / 0 devis » sans explication.
+ * Seules les cartes ajoutables MAINTENANT comptent (statut « pret », celui où le bouton d'ajout est
+ * affiché) : une carte en cours de lecture, d'OCR ou en erreur n'a pas de geste à proposer.
+ * @returns {{total:number, devis:number, pieces:number}}
+ */
+export function fichiersEnAttente() {
+  const prets = depots.filter((d) => d.statut === "pret");
+  const devis = prets.filter((d) => d.categorie === "devis").length;
+  return { total: prets.length, devis, pieces: prets.length - devis };
+}
+
 /* ------------------------------------------------------------------ */
 /* Dépôt de fichiers                                                   */
 /* ------------------------------------------------------------------ */

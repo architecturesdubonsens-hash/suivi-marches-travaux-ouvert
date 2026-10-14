@@ -212,6 +212,10 @@ export const FICHES = [
     blocs: [
       ['p', "Le devis retenu devient la base du marché : son montant, ses variantes et sa désignation de "
         + "lot sont repris tels quels dans la pièce signée."],
+      ['attention', "Déposer un PDF ne l'ajoute pas au dossier. Il reste une carte à l'écran tant que vous "
+        + "n'avez pas choisi son entreprise et cliqué « Ajouter ce devis » : c'est à ce clic que le devis et "
+        + "l'entreprise sont créés. Un bandeau en haut de l'écran rappelle les fichiers déposés mais pas encore "
+        + "ajoutés. Recharger la page avant d'avoir cliqué les fait disparaître."],
       ['p', "Quand le PDF porte une couche texte, l'application y lit le numéro, la date et le montant HT "
         + "pour éviter la ressaisie. Rien n'est deviné : ce qui n'a pas été lu reste vide, et tout ce qui a "
         + "été lu reste modifiable."],

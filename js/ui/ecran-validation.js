@@ -250,7 +250,7 @@ export function afficher(conteneur, ctx) {
   // On n'oblige donc jamais à passer par le dépôt d'un devis pour créer une entreprise :
   // le message informe, le formulaire d'ajout reste à disposition plus bas.
   const avertissementVide = entreprises.length ? [] : [
-    el("p", { classe: "message-info", texte: "Aucune entreprise pour l'instant : ajoutez-les ci-dessous, ou déposez leurs devis à l'étape 2 (Dépôt) — chaque devis déposé crée ou rattache son entreprise." }),
+    el("p", { classe: "message-info", texte: "Aucune entreprise pour l'instant : ajoutez-les ci-dessous, ou déposez leurs devis à l'étape 2 (Dépôt), puis cliquez sur « Ajouter ce devis » : l'entreprise est créée ou rattachée à ce clic, pas au dépôt." }),
   ];
 
   const cartes = [];
