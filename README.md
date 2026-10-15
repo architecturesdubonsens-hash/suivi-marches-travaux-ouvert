@@ -33,7 +33,11 @@ Le workflow suit quatre écrans : **1. Configuration** (opération, maître d'ou
 **L'agence est vide au départ** : l'outil ne présuppose rien sur celle qui s'en sert. Renseignez-la une fois à l'écran
 Configuration ; elle figure ensuite sur les ordres de service, marchés et comptes rendus.
 
-L'état du projet est conservé dans le navigateur (IndexedDB) et s'exporte en JSON pour passer d'un poste à l'autre.
+**Où sont mes données ?** Le dossier est enregistré automatiquement, mais **uniquement dans le navigateur de ce poste**
+(IndexedDB) : rien n'est envoyé ailleurs. Vider les données du site, changer d'ordinateur ou ouvrir une fenêtre de
+navigation privée le fait perdre. L'application le dit dès l'écran Configuration, où se trouvent aussi les boutons
+**Exporter le dossier (JSON)** et **Importer un dossier (JSON)** : l'export sauvegarde le dossier dans un fichier, l'import
+le reprend, ici ou sur un autre poste.
 
 ## Partager ses dossiers entre postes (facultatif)
 

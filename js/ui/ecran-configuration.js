@@ -8,6 +8,7 @@
 import { el } from "./helpers.js";
 import { titreAide } from "./bulle.js";
 import { messageIndisponible } from "./etat-modules.js";
+import { blocSauvegardeLocale } from "./sauvegarde-locale.js";
 
 /** Lecture d'un chemin "a.b.c" sur un objet, avec valeur par défaut. */
 function lireChemin(obj, chemin, defaut = "") {
@@ -191,6 +192,7 @@ export function afficher(conteneur, ctx) {
       el("h2", { texte: "Configuration du projet" }),
       el("p", { classe: "aide", texte: "Saisie unique : ces données alimentent sans ressaisie le Marché de Travaux, les Ordres de Service, le CRC et les fiches d'avenant." }),
     ),
+    blocSauvegardeLocale(ctx),
     carteOperation, carteMo, carteAgence, carteEquipe, carteParametres,
     el("div", { classe: "carte" }, nav),
   );
