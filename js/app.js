@@ -22,6 +22,7 @@ import { afficher as ecranValidation } from "./ui/ecran-validation.js";
 import { afficher as ecranGeneration } from "./ui/ecran-generation.js";
 import { restaurerSessionPartage, barreDossier, signalerModification } from "./ui/panneau-partage.js";
 import { installerAide } from "./ui/aide.js";
+import { LIBELLE_ENREGISTRE, INFOBULLE_INDICATEUR } from "./ui/sauvegarde-locale.js";
 import { rafraichirAvertissements } from "./ui/avertissements.js";
 import { MODULES_PARTENAIRES, symbolesManquants } from "./ui/etat-modules.js";
 
@@ -142,7 +143,11 @@ async function chargerPartenaires() {
 /* ------------------------------------------------------------------ */
 
 function majIndicateur(texte) {
-  if (indicateur) indicateur.textContent = texte;
+  if (!indicateur) return;
+  indicateur.textContent = texte;
+  // L'enregistrement automatique n'a lieu que dans CE navigateur : l'info-bulle le dit et
+  // renvoie vers l'export (js/ui/sauvegarde-locale.js).
+  indicateur.title = INFOBULLE_INDICATEUR;
 }
 
 async function sauvegarder() {
@@ -152,9 +157,9 @@ async function sauvegarder() {
   }
   try {
     await services.etat.sauvegarderProjet(projet);
-    majIndicateur("Enregistré à " + new Date().toLocaleTimeString("fr-FR", { hour: "2-digit", minute: "2-digit" }));
+    majIndicateur(LIBELLE_ENREGISTRE + new Date().toLocaleTimeString("fr-FR", { hour: "2-digit", minute: "2-digit" }));
   } catch (erreur) {
-    majIndicateur("Échec de la sauvegarde : " + (erreur && erreur.message ? erreur.message : erreur));
+    majIndicateur("Échec de la sauvegarde dans ce navigateur : " + (erreur && erreur.message ? erreur.message : erreur));
   }
 }
 const planifierSauvegarde = debounce(sauvegarder, 800);

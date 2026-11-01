@@ -19,7 +19,7 @@ import {
 async function sauvegarderTout() {
   const port = portCourant();
   if (!port) {
-    toast("Connectez-vous d'abord à la base de l'agence (barre du haut) : la sauvegarde "
+    toast("Connectez-vous d'abord à la base partagée (barre « Dossier partagé », en haut) : la sauvegarde "
       + "se fait avec votre session.", "erreur");
     return;
   }
@@ -56,7 +56,7 @@ async function sauvegarderTout() {
 async function restaurer(fichier, surFin) {
   const port = portCourant();
   if (!port) {
-    toast("Connectez-vous d'abord à la base de l'agence (barre du haut).", "erreur");
+    toast("Connectez-vous d'abord à la base partagée (barre « Dossier partagé », en haut).", "erreur");
     return;
   }
   try {

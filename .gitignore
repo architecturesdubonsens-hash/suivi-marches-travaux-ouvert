@@ -14,3 +14,5 @@ outputs/
 
 # Divers
 *.tmp
+
+.vercel
